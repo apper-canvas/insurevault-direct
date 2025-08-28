@@ -205,10 +205,9 @@ const handleUploadDocument = () => {
               key={`document-${document?.id || document?.name || index}`} 
               className="p-6 hover:shadow-elevated transition-all duration-300 group"
             >
-              <div className="flex items-start justify-between mb-6">
+<div className="flex items-start justify-between mb-6">
                 <div className={`w-14 h-14 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-xl flex items-center justify-center`}>
                   <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-7 h-7" />
-                </div>
                 </div>
                 <div className="flex gap-2">
                   <Button variant="ghost" size="sm" title="Download document">
@@ -218,7 +217,7 @@ const handleUploadDocument = () => {
                     <ApperIcon name="Share" className="w-4 h-4" />
                   </Button>
                 </div>
-</div>
+              </div>
               
               <div className="mb-6">
                 <h3 className="font-semibold text-gray-900 mb-2 text-base">
@@ -229,9 +228,8 @@ const handleUploadDocument = () => {
                 )}
               </div>
 
-              <div className="space-y-3 mb-6">
+<div className="space-y-3 mb-6">
                 <div className="flex justify-between items-center">
-<div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Type</span>
                   <Badge variant="default">
                     {(document?.type || 'pdf').charAt(0).toUpperCase() + (document?.type || 'pdf').slice(1)}

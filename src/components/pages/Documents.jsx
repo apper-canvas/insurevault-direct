@@ -98,18 +98,18 @@ const handleUploadDocument = () => {
     setShowUploadModal(true);
   };
 
-  return (
-    <div className="space-y-6">
+return (
+    <div className="space-y-4 sm:space-y-6 pb-6">
       {/* Header */}
-      <div className="glass-card rounded-xl p-6">
+      <div className="glass-card rounded-xl p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Documents</h1>
-            <p className="text-gray-600">Access all your insurance documents and certificates</p>
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">My Documents</h1>
+            <p className="text-gray-600 text-sm sm:text-base">Securely store and manage all your insurance documents</p>
           </div>
           <Button 
             variant="primary" 
-            className="shadow-lg hover:shadow-xl"
+            className="shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 w-full sm:w-auto"
             onClick={handleUploadDocument}
           >
             <ApperIcon name="Upload" className="w-4 h-4 mr-2" />
@@ -118,74 +118,75 @@ const handleUploadDocument = () => {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="glass-card rounded-xl p-6">
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="flex-1">
+{/* Search & Filters */}
+      <div className="glass-card rounded-xl p-4 sm:p-6">
+        <div className="space-y-4">
+          <div className="w-full">
             <Input
               placeholder="Search documents by name or description..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full"
+              className="w-full text-base"
             />
           </div>
-          <div className="flex gap-2 overflow-x-auto">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {documentTypes.map((type) => (
               <button
                 key={type.value}
                 onClick={() => setFilterType(type.value)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all duration-200 ${
+                className={`flex items-center gap-2 px-3 sm:px-4 py-2.5 rounded-lg whitespace-nowrap transition-all duration-200 text-sm sm:text-sm font-medium min-w-fit ${
                   filterType === type.value
-                    ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md"
+                    : "bg-white/80 text-gray-700 hover:bg-gray-50 border border-gray-200"
                 }`}
               >
-                <ApperIcon name={type.icon} className="w-4 h-4" />
-                <span className="text-sm font-medium">{type.label}</span>
+                <ApperIcon name={type.icon} className="w-4 h-4 flex-shrink-0" />
+                <span className="hidden sm:inline">{type.label}</span>
+                <span className="sm:hidden">{type.label.split(' ')[0]}</span>
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Document Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="FolderOpen" className="w-5 h-5 text-primary-600" />
+{/* Document Stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="glass-card rounded-xl p-3 sm:p-4 text-center hover:shadow-elevated transition-all duration-300 group">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+            <ApperIcon name="FolderOpen" className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
           </div>
-          <p className="text-2xl font-bold gradient-text">{documents.length}</p>
-          <p className="text-sm text-gray-600">Total Documents</p>
+          <p className="text-xl sm:text-2xl font-bold gradient-text">{documents.length}</p>
+          <p className="text-xs sm:text-sm text-gray-600 font-medium">Total Documents</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="Shield" className="w-5 h-5 text-green-600" />
+        <div className="glass-card rounded-xl p-3 sm:p-4 text-center hover:shadow-elevated transition-all duration-300 group">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+            <ApperIcon name="Shield" className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600" />
           </div>
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-xl sm:text-2xl font-bold text-emerald-600">
             {documents.filter(d => d.type === "policy").length}
           </p>
-          <p className="text-sm text-gray-600">Policy Cards</p>
+          <p className="text-xs sm:text-sm text-gray-600 font-medium">Policy Cards</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="FileText" className="w-5 h-5 text-orange-600" />
+        <div className="glass-card rounded-xl p-3 sm:p-4 text-center hover:shadow-elevated transition-all duration-300 group">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+            <ApperIcon name="FileText" className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
           </div>
-          <p className="text-2xl font-bold text-orange-600">
+          <p className="text-xl sm:text-2xl font-bold text-orange-600">
             {documents.filter(d => d.type === "claim").length}
           </p>
-          <p className="text-sm text-gray-600">Claim Docs</p>
+          <p className="text-xs sm:text-sm text-gray-600 font-medium">Claim Docs</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="Award" className="w-5 h-5 text-purple-600" />
+        <div className="glass-card rounded-xl p-3 sm:p-4 text-center hover:shadow-elevated transition-all duration-300 group">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-violet-100 to-violet-200 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+            <ApperIcon name="Award" className="w-5 h-5 sm:w-6 sm:h-6 text-violet-600" />
           </div>
-          <p className="text-2xl font-bold text-purple-600">
+          <p className="text-xl sm:text-2xl font-bold text-violet-600">
             {documents.filter(d => d.type === "certificate").length}
           </p>
-          <p className="text-sm text-gray-600">Certificates</p>
+          <p className="text-xs sm:text-sm text-gray-600 font-medium">Certificates</p>
         </div>
       </div>
 
@@ -199,78 +200,84 @@ const handleUploadDocument = () => {
           icon="Upload"
         />
       ) : (
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-{filteredDocuments?.map((document, index) => (
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+          {filteredDocuments?.map((document, index) => (
             <Card 
               key={`document-${document?.id || document?.name || index}`} 
-              className="hover:shadow-elevated transition-all duration-300 group"
+              className="hover:shadow-elevated transition-all duration-300 group hover:scale-[1.02] transform"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-lg flex items-center justify-center`}>
-                  <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-6 h-6" />
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <div className="flex gap-2">
-                  <Button variant="ghost" size="sm" title="Download document">
+                <div className="flex gap-1 sm:gap-2">
+                  <Button variant="ghost" size="sm" className="hover:bg-gray-100 hover:scale-110 transition-all duration-200" title="Download document">
                     <ApperIcon name="Download" className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="sm" title="Share document">
+                  <Button variant="ghost" size="sm" className="hover:bg-gray-100 hover:scale-110 transition-all duration-200" title="Share document">
                     <ApperIcon name="Share" className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
               
               <div className="mb-4">
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg leading-tight">
                   {document?.name || 'Unnamed Document'}
                 </h3>
                 {document?.description && (
-                  <p className="text-sm text-gray-600 line-clamp-2">{document.description}</p>
+                  <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{document.description}</p>
                 )}
               </div>
 
-              <div className="space-y-2 mb-4">
+              <div className="space-y-2.5 mb-4">
                 <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Type</span>
-                  <Badge variant="default">
+                  <span className="text-gray-500 font-medium">Type</span>
+                  <Badge variant="default" className="text-xs">
                     {(document?.type || 'pdf').charAt(0).toUpperCase() + (document?.type || 'pdf').slice(1)}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Size</span>
-                  <span className="text-gray-900">{document?.fileSize || "2.5 MB"}</span>
+                  <span className="text-gray-500 font-medium">Size</span>
+                  <span className="text-gray-900 font-medium">{document?.fileSize || "2.5 MB"}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Updated</span>
-                  <span className="text-gray-900">{document?.lastModified || "2 days ago"}</span>
+                  <span className="text-gray-500 font-medium">Updated</span>
+                  <span className="text-gray-900 font-medium">{document?.lastModified || "2 days ago"}</span>
                 </div>
               </div>
 
-              <Button variant="outline" size="sm" className="w-full">
+              <Button variant="outline" size="sm" className="w-full hover:bg-primary-50 hover:border-primary-300 hover:text-primary-700 transition-all duration-200">
                 <ApperIcon name="Eye" className="w-4 h-4 mr-2" />
                 View Document
               </Button>
             </Card>
           )) || (
-            <div className="col-span-full text-center py-8 text-gray-500">
-              No documents available
+            <div className="col-span-full text-center py-12 text-gray-500">
+              <div className="max-w-sm mx-auto">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <ApperIcon name="FileX" className="w-8 h-8 text-gray-400" />
+                </div>
+                <p className="text-lg font-medium text-gray-600 mb-1">No documents available</p>
+                <p className="text-sm text-gray-500">Upload your first document to get started</p>
+              </div>
             </div>
           )}
         </div>
       )}
 
-      {/* Digital Wallet Section */}
-      <Card className="bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="flex items-center justify-between">
+{/* Digital Wallet Section */}
+      <Card className="bg-gradient-to-br from-primary-50 via-primary-25 to-secondary-50 border border-primary-100/50">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
-              <ApperIcon name="CreditCard" className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+              <ApperIcon name="CreditCard" className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
             </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">Digital Insurance Wallet</h3>
-              <p className="text-sm text-gray-600">Quick access to all your policy cards</p>
+            <div className="space-y-1">
+              <h3 className="font-semibold text-gray-900 text-lg">Digital Insurance Wallet</h3>
+              <p className="text-sm text-gray-600">Quick access to all your policy cards and certificates</p>
             </div>
           </div>
-          <Button variant="primary">
+          <Button variant="primary" className="shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 w-full sm:w-auto">
             <ApperIcon name="Wallet" className="w-4 h-4 mr-2" />
             Open Wallet
           </Button>
@@ -422,18 +429,18 @@ const DocumentUploadModal = ({ onClose, onUpload }) => {
   };
 
 return (
-<div 
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 pointer-events-auto"
-      onClick={(e) => {
-        if (e.target === e.currentTarget && !uploading) {
-          onClose();
-        }
-      }}
-    >
-<div 
-        className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in overflow-hidden pointer-events-auto"
-        onClick={(e) => e.stopPropagation()}
+      <div 
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 pointer-events-auto"
+        onClick={(e) => {
+          if (e.target === e.currentTarget && !uploading) {
+            onClose();
+          }
+        }}
       >
+        <div 
+          className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in overflow-hidden pointer-events-auto border border-gray-100"
+          onClick={(e) => e.stopPropagation()}
+        >
         <div className="p-6 overflow-y-auto scroll-smooth flex-1">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
@@ -452,9 +459,11 @@ return (
 
           <form onSubmit={handleUpload} className="space-y-4">
             {/* File Drop Zone */}
-            <div 
-              className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
-                dragActive ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-gray-400'
+<div 
+              className={`border-2 border-dashed rounded-xl p-6 text-center transition-all duration-300 ${
+                dragActive 
+                  ? 'border-primary-500 bg-primary-50 scale-[1.02]' 
+                  : 'border-gray-300 hover:border-primary-300 hover:bg-gray-50'
               }`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -546,23 +555,23 @@ return (
             </div>
 
             {/* Actions */}
-<div className="flex gap-3 pt-4">
+<div className="flex gap-3 pt-4 border-t border-gray-100">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 hover:bg-gray-50 transition-colors duration-200"
+                className="flex-1 hover:bg-gray-50 hover:scale-[1.02] transform transition-all duration-200"
                 disabled={uploading}
                 title="Cancel upload and close modal"
               >
                 <ApperIcon name="X" className="w-4 h-4 mr-2" />
                 Cancel
               </Button>
-              <Button
+<Button
                 type="submit"
                 variant="primary"
-                className="flex-1"
-disabled={uploading || !selectedFile}
+                className="flex-1 shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+                disabled={uploading || !selectedFile}
               >
                 {uploading ? (
                   <>

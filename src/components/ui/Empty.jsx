@@ -24,9 +24,9 @@ const Empty = ({
           {description}
         </p>
         {action && (
-          <button
+<button
             onClick={action}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:from-primary-600 hover:to-primary-700 transition-all duration-200 transform hover:scale-105"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:from-primary-600 hover:to-primary-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl active:scale-[0.98]"
           >
             <ApperIcon name="Plus" className="w-4 h-4" />
             {actionText}

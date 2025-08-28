@@ -1,18 +1,20 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Layout from "@/components/organisms/Layout";
-import Dashboard from "@/components/pages/Dashboard";
+import EmergencyAssistance from "@/components/pages/EmergencyAssistance";
+import ClaimForm from "@/components/pages/ClaimForm";
+import Claims from "@/components/pages/Claims";
 import Policies from "@/components/pages/Policies";
 import PolicyComparison from "@/components/pages/PolicyComparison";
-import Claims from "@/components/pages/Claims";
-import ClaimForm from "@/components/pages/ClaimForm";
+import SafetyChecklists from "@/components/pages/SafetyChecklists";
+import Dashboard from "@/components/pages/Dashboard";
+import Recommendations from "@/components/pages/Recommendations";
 import Documents from "@/components/pages/Documents";
 import Profile from "@/components/pages/Profile";
 import AddAsset from "@/components/pages/AddAsset";
-import SafetyChecklists from "@/components/pages/SafetyChecklists";
 import Payments from "@/components/pages/Payments";
-import Recommendations from "@/components/pages/Recommendations";
+import Layout from "@/components/organisms/Layout";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,8 +30,9 @@ function App() {
             <Route path="profile" element={<Profile />} />
 <Route path="add-asset" element={<AddAsset />} />
 <Route path="safety" element={<SafetyChecklists />} />
-            <Route path="payments" element={<Payments />} />
+<Route path="payments" element={<Payments />} />
             <Route path="recommendations" element={<Recommendations />} />
+            <Route path="emergency" element={<EmergencyAssistance />} />
           </Route>
         </Routes>
         

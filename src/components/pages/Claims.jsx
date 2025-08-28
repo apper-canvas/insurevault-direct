@@ -22,16 +22,26 @@ const Claims = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="glass-card rounded-xl p-6">
+<div className="glass-card rounded-xl p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">My Claims</h1>
             <p className="text-gray-600">Track and manage your insurance claims</p>
           </div>
-          <Button variant="primary" onClick={() => navigate("/claims/new")}>
-            <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
-            File New Claim
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              variant="outline" 
+              onClick={() => navigate("/emergency")}
+              className="border-error text-error hover:bg-error hover:text-white"
+            >
+              <ApperIcon name="AlertTriangle" className="w-4 h-4 mr-2" />
+              Emergency Assistance
+            </Button>
+            <Button variant="primary" onClick={() => navigate("/claims/new")}>
+              <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
+              File New Claim
+            </Button>
+          </div>
         </div>
       </div>
 

@@ -9,9 +9,9 @@ import Badge from "@/components/atoms/Badge";
 import ClaimsList from "@/components/organisms/ClaimsList";
 import DashboardStats from "@/components/organisms/DashboardStats";
 import PolicyList from "@/components/organisms/PolicyList";
+import SavingsWidget from "@/components/molecules/SavingsWidget";
 import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const [dashboardData, setDashboardData] = useState(null);
@@ -81,7 +81,10 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-8">
+<div className="space-y-8">
+      
+      {/* Savings Calculator Widget */}
+      <SavingsWidget />
       {/* Welcome Section */}
       <div className="glass-card rounded-xl p-6 bg-gradient-to-r from-primary-50 to-secondary-50">
         <div className="flex items-center justify-between">

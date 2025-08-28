@@ -8,6 +8,7 @@ import Claims from "@/components/pages/Claims";
 import Documents from "@/components/pages/Documents";
 import Profile from "@/components/pages/Profile";
 import AddAsset from "@/components/pages/AddAsset";
+import SafetyChecklists from "@/components/pages/SafetyChecklists";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
             <Route path="claims" element={<Claims />} />
             <Route path="documents" element={<Documents />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="add-asset" element={<AddAsset />} />
+<Route path="add-asset" element={<AddAsset />} />
+            <Route path="safety" element={<SafetyChecklists />} />
           </Route>
         </Routes>
         

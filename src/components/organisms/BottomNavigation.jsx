@@ -5,11 +5,11 @@ import ApperIcon from "@/components/ApperIcon";
 
 const BottomNavigation = ({ className }) => {
   const navItems = [
-    { path: "/", label: "Dashboard", icon: "LayoutDashboard" },
-    { path: "/policies", label: "Policies", icon: "Shield" },
-    { path: "/claims", label: "Claims", icon: "FileText" },
-    { path: "/documents", label: "Documents", icon: "FolderOpen" },
-    { path: "/profile", label: "Profile", icon: "User" }
+    { to: "/", icon: "Home", label: "Home" },
+    { to: "/policies", icon: "Shield", label: "Policies" },
+    { to: "/safety", icon: "ShieldCheck", label: "Safety" },
+    { to: "/claims", icon: "FileText", label: "Claims" },
+    { to: "/profile", icon: "User", label: "Profile" }
   ];
 
   return (
@@ -20,8 +20,8 @@ const BottomNavigation = ({ className }) => {
       <div className="grid grid-cols-5 h-16">
         {navItems.map((item) => (
           <NavLink
-            key={item.path}
-            to={item.path}
+            key={item.to}
+            to={item.to}
             className={({ isActive }) => cn(
               "flex flex-col items-center justify-center gap-1 transition-all duration-200 relative",
               isActive 

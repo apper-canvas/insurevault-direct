@@ -1,0 +1,249 @@
+[
+  {
+    "Id": 1,
+    "title": "Vehicle Safety Essentials",
+    "description": "Essential safety checks and maintenance tasks for your car to reduce accident risks and ensure optimal performance.",
+    "assetType": "car",
+    "priority": "high",
+    "estimatedTime": "30 minutes",
+    "status": "active",
+    "tasks": [
+      {
+        "id": "car-1",
+        "title": "Check tire pressure and tread depth monthly",
+        "description": "Proper tire maintenance prevents blowouts and improves fuel efficiency",
+        "priority": "high",
+        "completed": true,
+        "completedAt": "2024-01-15T10:00:00Z"
+      },
+      {
+        "id": "car-2", 
+        "title": "Test brakes and brake fluid levels",
+        "description": "Ensure braking system is functioning properly",
+        "priority": "high",
+        "completed": false
+      },
+      {
+        "id": "car-3",
+        "title": "Verify all lights are working",
+        "description": "Check headlights, taillights, indicators, and hazard lights",
+        "priority": "medium",
+        "completed": true,
+        "completedAt": "2024-01-10T14:30:00Z"
+      },
+      {
+        "id": "car-4",
+        "title": "Keep emergency kit in car",
+        "description": "Include first aid, flashlight, jumper cables, and basic tools",
+        "priority": "medium", 
+        "completed": false
+      },
+      {
+        "id": "car-5",
+        "title": "Update vehicle registration and insurance documents",
+        "description": "Ensure all documents are current and easily accessible",
+        "priority": "medium",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "title": "Two-Wheeler Safety Protocol",
+    "description": "Critical safety measures for motorcycle and scooter riders to minimize road accident risks.",
+    "assetType": "bike",
+    "priority": "high", 
+    "estimatedTime": "20 minutes",
+    "status": "active",
+    "tasks": [
+      {
+        "id": "bike-1",
+        "title": "Always wear ISI certified helmet",
+        "description": "Properly fitted helmet reduces head injury risk by 70%",
+        "priority": "high",
+        "completed": true,
+        "completedAt": "2024-01-12T09:00:00Z"
+      },
+      {
+        "id": "bike-2",
+        "title": "Check brake functionality before every ride",
+        "description": "Test both front and rear brakes for proper response",
+        "priority": "high", 
+        "completed": false
+      },
+      {
+        "id": "bike-3",
+        "title": "Inspect chain tension and lubrication",
+        "description": "Proper chain maintenance prevents mechanical failures",
+        "priority": "medium",
+        "completed": false
+      },
+      {
+        "id": "bike-4",
+        "title": "Wear reflective clothing during night rides",
+        "description": "Increase visibility to other road users",
+        "priority": "medium",
+        "completed": true,
+        "completedAt": "2024-01-08T18:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "title": "Home Security & Safety",
+    "description": "Comprehensive home protection measures to prevent burglary, fire, and other household risks.",
+    "assetType": "home",
+    "priority": "high",
+    "estimatedTime": "45 minutes", 
+    "status": "active",
+    "tasks": [
+      {
+        "id": "home-1",
+        "title": "Install and test smoke detectors",
+        "description": "Check batteries monthly and replace detectors every 10 years",
+        "priority": "high",
+        "completed": false
+      },
+      {
+        "id": "home-2",
+        "title": "Secure all entry points with quality locks",
+        "description": "Use deadbolts and consider smart locks for enhanced security",
+        "priority": "high",
+        "completed": true,
+        "completedAt": "2024-01-05T16:00:00Z"
+      },
+      {
+        "id": "home-3", 
+        "title": "Check electrical wiring and outlets",
+        "description": "Look for frayed wires, sparks, or frequent circuit breaker trips",
+        "priority": "high",
+        "completed": false
+      },
+      {
+        "id": "home-4",
+        "title": "Install motion sensor lights outdoors",
+        "description": "Deter intruders and improve nighttime safety",
+        "priority": "medium",
+        "completed": false
+      },
+      {
+        "id": "home-5",
+        "title": "Create and practice emergency evacuation plan",
+        "description": "Ensure all family members know escape routes",
+        "priority": "medium", 
+        "completed": false
+      },
+      {
+        "id": "home-6",
+        "title": "Service HVAC system annually",
+        "description": "Prevent carbon monoxide leaks and maintain air quality",
+        "priority": "medium",
+        "completed": true,
+        "completedAt": "2024-01-03T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "title": "Electronic Device Protection", 
+    "description": "Safeguard your gadgets and electronics from damage, theft, and data loss.",
+    "assetType": "gadget",
+    "priority": "medium",
+    "estimatedTime": "25 minutes",
+    "status": "active", 
+    "tasks": [
+      {
+        "id": "gadget-1",
+        "title": "Enable screen lock and biometric security",
+        "description": "Protect device access with PIN, password, or fingerprint",
+        "priority": "high",
+        "completed": true,
+        "completedAt": "2024-01-14T13:00:00Z"
+      },
+      {
+        "id": "gadget-2",
+        "title": "Install antivirus software",
+        "description": "Protect against malware and suspicious apps",
+        "priority": "high", 
+        "completed": false
+      },
+      {
+        "id": "gadget-3",
+        "title": "Use protective case and screen protector",
+        "description": "Prevent physical damage from drops and scratches",
+        "priority": "medium",
+        "completed": true,
+        "completedAt": "2024-01-11T15:30:00Z"
+      },
+      {
+        "id": "gadget-4",
+        "title": "Enable automatic cloud backup",
+        "description": "Protect important data and photos from device loss",
+        "priority": "medium",
+        "completed": false
+      },
+      {
+        "id": "gadget-5",
+        "title": "Register device serial numbers",
+        "description": "Keep records for insurance and theft recovery purposes", 
+        "priority": "low",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "title": "Personal Health & Wellness",
+    "description": "Preventive health measures and wellness practices to maintain good health and reduce medical risks.",
+    "assetType": "health",
+    "priority": "high",
+    "estimatedTime": "Ongoing",
+    "status": "active",
+    "tasks": [
+      {
+        "id": "health-1",
+        "title": "Schedule annual health checkup",
+        "description": "Early detection of health issues through regular screening",
+        "priority": "high", 
+        "completed": false
+      },
+      {
+        "id": "health-2",
+        "title": "Maintain updated vaccination records",
+        "description": "Stay current with recommended immunizations",
+        "priority": "high",
+        "completed": true,
+        "completedAt": "2024-01-09T10:00:00Z"
+      },
+      {
+        "id": "health-3",
+        "title": "Exercise regularly - 150 minutes per week",
+        "description": "Maintain cardiovascular health and prevent chronic diseases",
+        "priority": "high",
+        "completed": false
+      },
+      {
+        "id": "health-4",
+        "title": "Maintain healthy diet with balanced nutrition",
+        "description": "Focus on fruits, vegetables, lean proteins, and whole grains",
+        "priority": "medium",
+        "completed": false
+      },
+      {
+        "id": "health-5",
+        "title": "Practice stress management techniques",
+        "description": "Use meditation, yoga, or other relaxation methods",
+        "priority": "medium",
+        "completed": true,
+        "completedAt": "2024-01-07T19:00:00Z"  
+      },
+      {
+        "id": "health-6",
+        "title": "Get adequate sleep - 7-9 hours nightly",
+        "description": "Maintain consistent sleep schedule for optimal health",
+        "priority": "medium",
+        "completed": false
+      }
+    ]
+  }
+]

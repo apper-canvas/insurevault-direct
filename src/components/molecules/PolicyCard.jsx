@@ -136,7 +136,7 @@ const PolicyCard = ({
         </div>
       )}
 
-      <div className="flex gap-2">
+<div className="flex gap-2">
         <Button
           variant="outline"
           size="sm"
@@ -146,7 +146,7 @@ const PolicyCard = ({
           View Details
         </Button>
         {policy.status === "active" && (
-<>
+          <>
             <Button
               variant="primary"
               size="sm"
@@ -155,6 +155,14 @@ const PolicyCard = ({
             >
               <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
               Renew
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => window.location.href = '/safety'}
+              title="View safety checklist"
+            >
+              <ApperIcon name="ShieldCheck" className="w-4 h-4" />
             </Button>
             <Button
               variant="ghost"

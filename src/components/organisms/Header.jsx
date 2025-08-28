@@ -42,7 +42,7 @@ const Header = ({ onMenuToggle }) => {
               <ApperIcon name="Shield" className="w-5 h-5 text-white" />
             </div>
             <div className="block">
-              <h1 className="text-lg sm:text-xl font-bold gradient-text">InsureVault</h1>
+              <h1 className="text-lg sm:text-xl font-bold font-display gradient-text">InsureVault</h1>
               <p className="text-xs sm:text-sm text-gray-500 -mt-1 hidden sm:block">{getPageTitle()}</p>
             </div>
           </div>

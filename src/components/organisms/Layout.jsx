@@ -30,9 +30,9 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <Header onMenuToggle={() => setMobileMenuOpen(!mobileMenuOpen)} />
       
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-64 lg:bg-white lg:shadow-lg lg:border-r lg:border-gray-200">
-        <div className="flex h-full flex-col pt-16">
+{/* Desktop Sidebar */}
+      <aside className="hidden lg:fixed lg:top-16 lg:left-0 lg:bottom-0 lg:z-50 lg:block lg:w-64 lg:bg-white lg:shadow-lg lg:border-r lg:border-gray-200">
+        <div className="flex h-full flex-col">
           <nav className="flex-1 px-4 py-6 space-y-2">
             {navigationItems.map((item) => (
               <button

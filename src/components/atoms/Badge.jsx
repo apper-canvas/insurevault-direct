@@ -4,9 +4,13 @@ import { cn } from "@/utils/cn";
 const Badge = forwardRef(({ 
   className, 
   variant = "default", 
-  children, 
+  children = "", 
   ...props 
 }, ref) => {
+  // Prevent object rendering by ensuring children is always a valid React node
+  const safeChildren = typeof children === 'object' && children !== null && !React.isValidElement(children)
+    ? String(children.text || children.label || children.value || children)
+    : children;
 const variants = {
     default: "bg-gray-100 text-gray-800",
     primary: "bg-primary-100 text-primary-800",
@@ -20,17 +24,17 @@ const variants = {
     pending: "bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800",
   };
   
-  return (
+return (
     <span
       className={cn(
         "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
-        variants[variant],
+        variants[variant] || variants.default,
         className
       )}
       ref={ref}
       {...props}
     >
-      {children}
+      {safeChildren}
     </span>
   );
 });

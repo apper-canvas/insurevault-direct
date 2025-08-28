@@ -12,11 +12,12 @@ import Profile from "@/components/pages/Profile";
 import AddAsset from "@/components/pages/AddAsset";
 import SafetyChecklists from "@/components/pages/SafetyChecklists";
 import Payments from "@/components/pages/Payments";
+import Recommendations from "@/components/pages/Recommendations";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Routes>
+<Routes>
 <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="policies" element={<Policies />} />
@@ -28,6 +29,7 @@ function App() {
 <Route path="add-asset" element={<AddAsset />} />
 <Route path="safety" element={<SafetyChecklists />} />
             <Route path="payments" element={<Payments />} />
+            <Route path="recommendations" element={<Recommendations />} />
           </Route>
         </Routes>
         

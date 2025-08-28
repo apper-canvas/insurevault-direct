@@ -10,6 +10,7 @@ import ClaimsList from "@/components/organisms/ClaimsList";
 import DashboardStats from "@/components/organisms/DashboardStats";
 import PolicyList from "@/components/organisms/PolicyList";
 import SavingsWidget from "@/components/molecules/SavingsWidget";
+import RecommendationCard from "@/components/molecules/RecommendationCard";
 import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
 const Dashboard = () => {
@@ -85,6 +86,9 @@ const Dashboard = () => {
       
       {/* Savings Calculator Widget */}
       <SavingsWidget />
+
+      {/* Personalized Recommendations */}
+      <RecommendationCard />
       {/* Welcome Section */}
       <div className="glass-card rounded-xl p-6 bg-gradient-to-r from-primary-50 to-secondary-50">
         <div className="flex items-center justify-between">

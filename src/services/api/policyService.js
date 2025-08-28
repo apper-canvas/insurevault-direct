@@ -74,8 +74,26 @@ update: async (id, updateData) => {
     return deletedPolicy;
   },
 
-  getByAssetId: async (assetId) => {
+getByAssetId: async (assetId) => {
     await new Promise(resolve => setTimeout(resolve, 250));
     return policyData.filter(policy => policy.assetId === parseInt(assetId));
+  },
+
+  getUserProfile: async () => {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    const activePolicies = policyData.filter(p => p.status === "active");
+    
+    // Calculate user profile based on existing policies
+    const profile = {
+      totalCoverage: activePolicies.reduce((sum, p) => sum + p.coverageAmount, 0),
+      totalPremium: activePolicies.reduce((sum, p) => sum + p.premium, 0),
+      policyTypes: [...new Set(activePolicies.map(p => p.asset?.type))],
+      ageGroup: "30-40", // Mock data
+      hasFamily: true,
+      riskProfile: "moderate",
+      preferredBudget: 50000
+    };
+    
+    return profile;
   }
 };

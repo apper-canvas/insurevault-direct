@@ -409,10 +409,13 @@ const DocumentUploadModal = ({ onClose, onUpload }) => {
     }
   };
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
+return (
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+<div className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in">
+        <div className="p-6 overflow-y-auto scroll-smooth flex-1">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900">Upload Document</h2>

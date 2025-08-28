@@ -66,10 +66,9 @@ return (
             {isSelected && <ApperIcon name="Check" className="w-4 h-4" />}
         </div>
     </div>}
-    <div className="flex items-start justify-between mb-4">
+<div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-<div
-                className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
                 <ApperIcon
                     name={getAssetIcon(policy.asset?.type)}
                     className="w-6 h-6 text-primary-600" />
@@ -205,9 +204,11 @@ return (
                         </div>
                     </div>
                 )}
-            </div>
-        </div>
 </div>
+        </div>
+    </div>
+    </div>
+);
 };
 
 export default PolicyCard;

@@ -81,8 +81,8 @@ const ClaimForm = () => {
     if (!formData.location.trim()) newErrors.location = "Incident location is required";
     if (!formData.contactPhone.trim()) newErrors.contactPhone = "Contact phone is required";
 
-    // Validate phone number format
-    if (formData.contactPhone && !/^\+?[\d\s\-\(\)]{10,15}$/.test(formData.contactPhone)) {
+// Validate phone number format
+    if (formData.contactPhone && !/^\+?[\d\s\-()]{10,15}$/.test(formData.contactPhone)) {
       newErrors.contactPhone = "Please enter a valid phone number";
     }
 

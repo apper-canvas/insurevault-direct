@@ -96,7 +96,7 @@ const PaymentHistory = ({ searchTerm = "", filterStatus = "all" }) => {
                   <ApperIcon name="CreditCard" className="w-6 h-6 text-primary-600" />
                 </div>
                 
-                <div className="flex-1">
+<div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="font-semibold text-gray-900">
                       {payment.policyNumber}
@@ -105,11 +105,11 @@ const PaymentHistory = ({ searchTerm = "", filterStatus = "all" }) => {
                       <ApperIcon name={statusConfig.icon} className="w-3 h-3 mr-1" />
                       {payment.status.charAt(0).toUpperCase() + payment.status.slice(1)}
                     </Badge>
-<p className="text-sm text-gray-600 mb-1">{payment.insurer}</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-1">{payment.insurer}</p>
                   <p className="text-sm text-gray-500">{payment.asset?.name || payment.assetName || 'Policy Asset'}</p>
                 </div>
               </div>
-              
               <div className="flex flex-col lg:flex-row lg:items-center gap-4">
                 <div className="text-right">
                   <p className="text-lg font-bold text-gray-900">

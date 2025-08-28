@@ -109,7 +109,8 @@ const Dashboard = () => {
             <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
             Add Policy
           </Button>
-        </div>
+</div>
+      </div>
 
       {/* Stats Overview */}
       <DashboardStats stats={dashboardData?.stats} />

@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
-import Button from "@/components/atoms/Button";
-import Input from "@/components/atoms/Input";
-import Badge from "@/components/atoms/Badge";
-import Card from "@/components/atoms/Card";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { documentService } from "@/services/api/documentService";
 import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
+import Input from "@/components/atoms/Input";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
-import { documentService } from "@/services/api/documentService";
+import Loading from "@/components/ui/Loading";
 
 const Documents = () => {
-  const [documents, setDocuments] = useState([]);
+const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
-
+  const [showUploadModal, setShowUploadModal] = useState(false);
   const loadDocuments = async () => {
     try {
       setLoading(true);
@@ -93,6 +94,10 @@ certificate: "from-green-100 to-green-200 text-green-600",
     return <Error message={error} onRetry={loadDocuments} />;
   }
 
+const handleUploadDocument = () => {
+    setShowUploadModal(true);
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -102,7 +107,11 @@ certificate: "from-green-100 to-green-200 text-green-600",
             <h1 className="text-2xl font-bold text-gray-900">My Documents</h1>
             <p className="text-gray-600">Access all your insurance documents and certificates</p>
           </div>
-<Button variant="primary" className="shadow-lg hover:shadow-xl">
+          <Button 
+            variant="primary" 
+            className="shadow-lg hover:shadow-xl"
+            onClick={handleUploadDocument}
+          >
             <ApperIcon name="Upload" className="w-4 h-4 mr-2" />
             Upload Document
           </Button>
@@ -181,11 +190,12 @@ certificate: "from-green-100 to-green-200 text-green-600",
       </div>
 
       {/* Documents Grid */}
+{/* Documents Grid */}
       {filteredDocuments.length === 0 ? (
         <Empty
           title="No Documents Found"
-description="Start building your secure document vault by uploading your important documents like ID cards, policies, and receipts."
-          action={() => {/* Upload action */}}
+          description="Start building your secure document vault by uploading your important documents like ID cards, policies, and receipts."
+          action={handleUploadDocument}
           actionText="Upload First Document"
           icon="Upload"
         />
@@ -258,6 +268,276 @@ description="Start building your secure document vault by uploading your importa
           </Button>
         </div>
       </Card>
+
+      {/* Document Upload Modal */}
+      {showUploadModal && (
+        <DocumentUploadModal 
+          onClose={() => setShowUploadModal(false)}
+          onUpload={loadDocuments}
+        />
+      )}
+    </div>
+};
+
+const DocumentUploadModal = ({ onClose, onUpload }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [documentType, setDocumentType] = useState("policy");
+  const [documentName, setDocumentName] = useState("");
+  const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+
+  const documentTypes = [
+    { value: "policy", label: "Policy Document" },
+    { value: "claim", label: "Claim Form" },
+    { value: "certificate", label: "Certificate" },
+    { value: "receipt", label: "Receipt" },
+    { value: "photo", label: "Photo/Image" },
+    { value: "id", label: "ID Document" },
+    { value: "license", label: "License" },
+    { value: "repair", label: "Repair Estimate" },
+    { value: "personal", label: "Personal Document" }
+  ];
+
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      validateAndSetFile(file);
+    }
+  };
+
+  const validateAndSetFile = (file) => {
+    // Check file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("File size must be less than 10MB");
+      return;
+    }
+
+    // Check file type
+    const allowedTypes = [
+      'application/pdf',
+      'image/jpeg',
+      'image/jpg', 
+      'image/png',
+      'image/gif',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Please select a valid file type (PDF, Word, or Image)");
+      return;
+    }
+
+    setSelectedFile(file);
+    if (!documentName) {
+      setDocumentName(file.name.replace(/\.[^/.]+$/, ""));
+    }
+  };
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      validateAndSetFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  const getFileSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    
+    if (!selectedFile) {
+      toast.error("Please select a file to upload");
+      return;
+    }
+
+    if (!documentName.trim()) {
+      toast.error("Please enter a document name");
+      return;
+    }
+
+    setUploading(true);
+
+    try {
+      await documentService.create({
+        name: documentName.trim(),
+        type: documentType,
+        description: description.trim(),
+        fileSize: getFileSize(selectedFile.size),
+        fileName: selectedFile.name,
+        mimeType: selectedFile.type,
+        uploadDate: new Date().toISOString()
+      });
+
+      onUpload(); // Refresh the documents list
+      onClose(); // Close modal
+    } catch (error) {
+      console.error('Upload failed:', error);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold text-gray-900">Upload Document</h2>
+            <Button variant="ghost" size="sm" onClick={onClose}>
+              <ApperIcon name="X" className="w-4 h-4" />
+            </Button>
+          </div>
+
+          <form onSubmit={handleUpload} className="space-y-4">
+            {/* File Drop Zone */}
+            <div 
+              className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
+                dragActive ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-gray-400'
+              }`}
+              onDragEnter={handleDrag}
+              onDragLeave={handleDrag}
+              onDragOver={handleDrag}
+              onDrop={handleDrop}
+            >
+              {selectedFile ? (
+                <div className="space-y-3">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto">
+                    <ApperIcon name="FileText" className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{selectedFile.name}</p>
+                    <p className="text-sm text-gray-500">{getFileSize(selectedFile.size)}</p>
+                  </div>
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setSelectedFile(null)}
+                  >
+                    Remove File
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
+                    <ApperIcon name="Upload" className="w-6 h-6 text-gray-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-medium">Drop your file here</p>
+                    <p className="text-sm text-gray-500">or click to browse</p>
+                  </div>
+                  <input
+                    type="file"
+                    onChange={handleFileSelect}
+                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Document Details */}
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Document Name *
+                </label>
+                <Input
+                  type="text"
+                  value={documentName}
+                  onChange={(e) => setDocumentName(e.target.value)}
+                  placeholder="Enter document name"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Document Type *
+                </label>
+                <select
+                  value={documentType}
+                  onChange={(e) => setDocumentType(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  required
+                >
+                  {documentTypes.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Description
+                </label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Add a description (optional)"
+                  rows={3}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onClose}
+                className="flex-1"
+                disabled={uploading}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+                className="flex-1"
+                disabled={uploading || !selectedFile}
+              >
+                {uploading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    Uploading...
+                  </>
+                ) : (
+                  <>
+                    <ApperIcon name="Upload" className="w-4 h-4 mr-2" />
+                    Upload Document
+                  </>
+                )}
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

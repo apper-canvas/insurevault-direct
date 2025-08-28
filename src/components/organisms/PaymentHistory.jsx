@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { paymentService } from "@/services/api/paymentService";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
 import PaymentModal from "@/components/molecules/PaymentModal";
 import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
 
 const PaymentHistory = ({ searchTerm = "", filterStatus = "all" }) => {
   const [payments, setPayments] = useState([]);
@@ -105,10 +105,8 @@ const PaymentHistory = ({ searchTerm = "", filterStatus = "all" }) => {
                       <ApperIcon name={statusConfig.icon} className="w-3 h-3 mr-1" />
                       {payment.status.charAt(0).toUpperCase() + payment.status.slice(1)}
                     </Badge>
-                  </div>
-                  
-                  <p className="text-sm text-gray-600 mb-1">{payment.insurer}</p>
-                  <p className="text-sm text-gray-500">{payment.asset.name}</p>
+<p className="text-sm text-gray-600 mb-1">{payment.insurer}</p>
+                  <p className="text-sm text-gray-500">{payment.asset?.name || payment.assetName || 'Policy Asset'}</p>
                 </div>
               </div>
               

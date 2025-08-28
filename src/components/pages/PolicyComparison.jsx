@@ -248,9 +248,9 @@ const PolicyComparison = () => {
                       className="text-gray-400 hover:text-gray-600"
                     >
                       <ApperIcon name="X" className="w-4 h-4" />
-                    </button>
+</button>
                   </div>
-                  <p className="text-xs text-gray-600 mb-1">{policy.asset?.name}</p>
+                  <p className="text-xs text-gray-600 mb-1">{policy.asset?.name || policy.assetName || 'Policy Asset'}</p>
                   <p className="text-sm font-semibold gradient-text">₹{policy.premium.toLocaleString()}</p>
                 </div>
               ))}
@@ -347,9 +347,9 @@ const ComparisonTable = ({ policies }) => {
           <div key={policy.Id} className="glass-card rounded-xl p-6 text-center">
             <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center mx-auto mb-3">
               <span className="font-bold text-primary-600">{policy.insurer.charAt(0)}</span>
-            </div>
+</div>
             <h3 className="font-semibold text-gray-900 mb-1">{policy.insurer}</h3>
-            <p className="text-sm text-gray-600 mb-3">{policy.asset?.name}</p>
+            <p className="text-sm text-gray-600 mb-3">{policy.asset?.name || policy.assetName || 'Policy Asset'}</p>
             <div className="space-y-2">
               <div className={cn(
                 "text-2xl font-bold",

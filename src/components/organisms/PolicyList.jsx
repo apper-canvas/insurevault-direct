@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { policyService } from "@/services/api/policyService";
+import ApperIcon from "@/components/ApperIcon";
 import PolicyCard from "@/components/molecules/PolicyCard";
-import Loading from "@/components/ui/Loading";
+import Button from "@/components/atoms/Button";
+import Policies from "@/components/pages/Policies";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
-import Button from "@/components/atoms/Button";
-import ApperIcon from "@/components/ApperIcon";
-import { policyService } from "@/services/api/policyService";
+import Loading from "@/components/ui/Loading";
 
 const PolicyList = ({ limit, showHeader = true, className }) => {
   const navigate = useNavigate();
@@ -39,19 +40,21 @@ const PolicyList = ({ limit, showHeader = true, className }) => {
 
 const handleRenew = async (policy) => {
     try {
-      toast.info(`Initiating renewal for ${policy.asset?.name}...`);
+      const assetName = policy.asset?.name || policy.assetName || 'your policy';
+      toast.info(`Initiating renewal for ${assetName}...`);
       await policyService.renew(policy.Id);
-      toast.success(`Renewal process started for ${policy.asset?.name}`);
+      toast.success(`Renewal process started for ${assetName}`);
       navigate(`/policies/${policy.Id}/renew`);
     } catch (error) {
       toast.error(`Failed to start renewal: ${error.message}`);
     }
   };
 
-  const handleSnooze = async (policy) => {
+const handleSnooze = async (policy) => {
     try {
       await policyService.snooze(policy.Id);
-      toast.success(`Renewal reminder snoozed for ${policy.asset?.name}`);
+      const assetName = policy.asset?.name || policy.assetName || 'your policy';
+      toast.success(`Renewal reminder snoozed for ${assetName}`);
       loadPolicies(); // Refresh to hide snoozed reminder
     } catch (error) {
       toast.error(`Failed to snooze reminder: ${error.message}`);

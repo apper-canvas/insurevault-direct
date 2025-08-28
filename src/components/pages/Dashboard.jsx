@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { dashboardService } from "@/services/api/dashboardService";
 import ApperIcon from "@/components/ApperIcon";
+import SavingsWidget from "@/components/molecules/SavingsWidget";
+import RecommendationCard from "@/components/molecules/RecommendationCard";
 import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import ClaimsList from "@/components/organisms/ClaimsList";
 import DashboardStats from "@/components/organisms/DashboardStats";
 import PolicyList from "@/components/organisms/PolicyList";
-import SavingsWidget from "@/components/molecules/SavingsWidget";
-import RecommendationCard from "@/components/molecules/RecommendationCard";
 import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
 const Dashboard = () => {
@@ -90,14 +90,15 @@ const Dashboard = () => {
       {/* Personalized Recommendations */}
       <RecommendationCard />
       {/* Welcome Section */}
+{/* Welcome Section */}
       <div className="glass-card rounded-xl p-6 bg-gradient-to-r from-primary-50 to-secondary-50">
         <div className="flex items-center justify-between">
-          <div>
+          <div className="flex-1">
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Welcome back, John! 👋
+              Welcome back, {dashboardData?.user?.name || dashboardData?.userName || 'User'}! 👋
             </h1>
             <p className="text-gray-600">
-              Your insurance portfolio is looking strong. Here's what needs your attention.
+              Manage your policies, track claims, and stay protected with ease.
             </p>
           </div>
           <Button 
@@ -109,7 +110,6 @@ const Dashboard = () => {
             Add Policy
           </Button>
         </div>
-      </div>
 
       {/* Stats Overview */}
       <DashboardStats stats={dashboardData?.stats} />

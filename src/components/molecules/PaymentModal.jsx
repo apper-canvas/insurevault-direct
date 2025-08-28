@@ -85,11 +85,10 @@ const PaymentModal = ({ payment, onClose, onPaymentSuccess }) => {
                 <span className="text-sm font-medium text-gray-900">{payment.insurer}</span>
               </div>
               
-              <div className="flex justify-between">
+<div className="flex justify-between">
                 <span className="text-sm text-gray-600">Asset</span>
-                <span className="text-sm font-medium text-gray-900">{payment.asset.name}</span>
+                <span className="text-sm font-medium text-gray-900">{payment.asset?.name || payment.assetName || 'Policy Asset'}</span>
               </div>
-              
               <div className="flex justify-between">
                 <span className="text-sm text-gray-600">Due Date</span>
                 <span className="text-sm font-medium text-gray-900">

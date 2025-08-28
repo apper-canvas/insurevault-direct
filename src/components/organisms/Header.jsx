@@ -95,11 +95,10 @@ const Header = ({ onMenuToggle }) => {
           <div className="relative group">
             <Button variant="ghost" size="sm" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center">
-                <ApperIcon name="User" className="w-4 h-4 text-gray-600" />
+<ApperIcon name="User" className="w-4 h-4 text-gray-600" />
               </div>
               <span className="hidden sm:block font-medium text-gray-700">John Doe</span>
             </Button>
-            
             {/* Profile Dropdown */}
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-elevated border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div className="p-2">

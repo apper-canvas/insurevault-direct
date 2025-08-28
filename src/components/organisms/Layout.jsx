@@ -81,10 +81,11 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
         </div>
       )}
       
-      <main className="pb-20 lg:pb-8 lg:pl-64">
+<main className="pb-20 lg:pb-8 lg:pl-64">
         <div className="container mx-auto px-4 py-6">
           <Outlet />
         </div>
+      </main>
       
       {/* Floating Emergency Button */}
       <div className="fixed bottom-24 lg:bottom-8 right-4 z-30">

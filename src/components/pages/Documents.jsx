@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { documentService } from "@/services/api/documentService";
 import ApperIcon from "@/components/ApperIcon";
 import Card from "@/components/atoms/Card";
@@ -189,7 +189,6 @@ const handleUploadDocument = () => {
         </div>
       </div>
 
-      {/* Documents Grid */}
 {/* Documents Grid */}
       {filteredDocuments.length === 0 ? (
         <Empty
@@ -275,11 +274,10 @@ const handleUploadDocument = () => {
           onClose={() => setShowUploadModal(false)}
           onUpload={loadDocuments}
         />
-/>
       )}
     </div>
   );
-
+};
 // DocumentUploadModal Component
 const DocumentUploadModal = ({ onClose, onUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);

@@ -78,18 +78,18 @@ return (
       </div>}
 
       {/* Header with icon and title inline */}
-      <div className="flex items-start gap-3 mb-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-lg flex items-center justify-center shadow-md flex-shrink-0">
+<div className="flex items-start gap-4 mb-4">
+        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
           <ApperIcon
             name={getAssetIcon(policy.asset?.type)}
-            className="w-5 h-5 text-white" />
+            className="w-6 h-6 text-white" />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="font-semibold text-gray-900 text-sm leading-tight">
+<div className="flex items-start justify-between gap-3 mb-3">
+            <h3 className="font-semibold text-gray-900 text-base leading-tight">
               {policy.asset?.name || policy.assetName || `${policy.type || "Asset"} Insurance`}
             </h3>
-            <div className="flex gap-1 flex-shrink-0">
+            <div className="flex gap-1.5 flex-shrink-0">
               {statusInfo && (
                 <Badge variant={statusInfo.variant || "default"} className="text-xs">
                   {statusInfo.text || "Unknown"}
@@ -102,27 +102,27 @@ return (
       </div>
 
       {/* Policy details with compact spacing */}
-      <div className="space-y-2 mb-4">
+<div className="space-y-3 mb-5">
         <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-600">Policy Number</span>
-          <span className="text-xs font-medium text-gray-900">{policy.policyNumber || 'N/A'}</span>
+          <span className="text-sm text-gray-600">Policy Number</span>
+          <span className="text-sm font-medium text-gray-900">{policy.policyNumber || 'N/A'}</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-600">Premium</span>
-          <span className="text-xs font-semibold text-gray-900">
+          <span className="text-sm text-gray-600">Premium</span>
+          <span className="text-sm font-semibold text-gray-900">
             ₹{policy.premium ? policy.premium.toLocaleString() : '0'}
           </span>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-600">Coverage</span>
-          <span className="text-xs font-medium text-gray-900">
+<div className="flex justify-between items-center">
+          <span className="text-sm text-gray-600">Coverage</span>
+          <span className="text-sm font-medium text-gray-900">
             ₹{policy.coverageAmount ? policy.coverageAmount.toLocaleString() : '0'}
           </span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-600">Expires</span>
+          <span className="text-sm text-gray-600">Expires</span>
           <span
-            className={cn("text-xs font-medium", isExpiringSoon() ? "text-warning" : "text-gray-900")}>
+            className={cn("text-sm font-medium", isExpiringSoon() ? "text-warning" : "text-gray-900")}>
             {policy.endDate ? (() => {
               try {
                 return format(new Date(policy.endDate), "MMM dd, yyyy");
@@ -133,23 +133,23 @@ return (
             })() : 'N/A'}
           </span>
         </div>
-        {policy.ncb && policy.ncb > 0 && (
+{policy.ncb && policy.ncb > 0 && (
           <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-600">NCB</span>
-            <Badge variant="success" className="text-xs">{policy.ncb}%</Badge>
+            <span className="text-sm text-gray-600">NCB</span>
+            <Badge variant="success">{policy.ncb}%</Badge>
           </div>
         )}
       </div>
 
       {/* Renewal reminder with compact design */}
-      {isExpiringSoon() && !policy.snoozedUntil && (
-        <div className="bg-gradient-to-r from-orange-50 via-yellow-50 to-amber-50 border border-orange-200 rounded-lg p-3 mb-3 shadow-sm">
+{isExpiringSoon() && !policy.snoozedUntil && (
+        <div className="bg-gradient-to-r from-orange-50 via-yellow-50 to-amber-50 border border-orange-200 rounded-xl p-4 mb-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <ApperIcon name="Clock" className="w-4 h-4 text-warning" />
+            <div className="flex items-center gap-3">
+              <ApperIcon name="Clock" className="w-5 h-5 text-warning" />
               <div>
-                <p className="text-xs text-warning font-semibold">Renewal Reminder</p>
-                <p className="text-xs text-warning/80">
+                <p className="text-sm text-warning font-semibold">Renewal Reminder</p>
+                <p className="text-sm text-warning/80">
                   Expires in {(() => {
                     try {
                       return Math.ceil((new Date(policy.endDate) - new Date()) / (1000 * 60 * 60 * 24));
@@ -160,15 +160,15 @@ return (
                 </p>
               </div>
             </div>
-            <div className="flex gap-1">
+<div className="flex gap-2">
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-warning hover:bg-warning/10 p-1"
+                className="text-warning hover:bg-warning/10 p-2"
                 onClick={() => onSnooze?.(policy)}>
-                <ApperIcon name="X" className="w-3 h-3" />
+                <ApperIcon name="X" className="w-4 h-4" />
               </Button>
-              <Button variant="success" size="sm" className="text-xs px-2" onClick={() => onRenew?.(policy)}>
+              <Button variant="success" size="sm" className="px-3" onClick={() => onRenew?.(policy)}>
                 Renew
               </Button>
             </div>
@@ -177,29 +177,29 @@ return (
       )}
 
       {/* Action buttons with compact design */}
-      {!isComparison && (
-        <div className="flex gap-2">
+{!isComparison && (
+        <div className="flex gap-3">
           <Button
             variant="outline"
             size="sm"
-            className="flex-1 border-primary-300 text-primary-700 hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 text-xs"
+            className="flex-1 border-primary-300 text-primary-700 hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 text-sm px-4"
             onClick={() => onViewDetails?.(policy)}>
             View Details
           </Button>
           {policy.status === "active" && (
             <>
-              <Button
+<Button
                 variant="primary"
                 size="sm"
-                className="flex-1 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-md text-xs"
+                className="flex-1 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-md text-sm px-4"
                 onClick={() => onRenew?.(policy)}>
-                <ApperIcon name="RefreshCw" className="w-3 h-3 mr-1" />
+                <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
                 Renew
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-accent-600 hover:bg-accent-50 hover:text-accent-700 p-2"
+className="text-accent-600 hover:bg-accent-50 hover:text-accent-700 p-2.5"
                 onClick={() => window.location.href = "/safety"}
                 title="View safety checklist">
                 <ApperIcon name="ShieldCheck" className="w-4 h-4" />
@@ -207,7 +207,7 @@ return (
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-700 p-2"
+                className="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-700 p-2.5"
                 onClick={() => onClaim?.(policy)}>
                 <ApperIcon name="FileText" className="w-4 h-4" />
               </Button>

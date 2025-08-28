@@ -199,15 +199,16 @@ const handleUploadDocument = () => {
           icon="Upload"
         />
       ) : (
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 {filteredDocuments?.map((document, index) => (
             <Card 
               key={`document-${document?.id || document?.name || index}`} 
-              className="hover:shadow-elevated transition-all duration-300 group"
+              className="p-6 hover:shadow-elevated transition-all duration-300 group"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-lg flex items-center justify-center`}>
-                  <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-6 h-6" />
+              <div className="flex items-start justify-between mb-6">
+                <div className={`w-14 h-14 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-xl flex items-center justify-center`}>
+                  <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-7 h-7" />
+                </div>
                 </div>
                 <div className="flex gap-2">
                   <Button variant="ghost" size="sm" title="Download document">
@@ -217,35 +218,36 @@ const handleUploadDocument = () => {
                     <ApperIcon name="Share" className="w-4 h-4" />
                   </Button>
                 </div>
-              </div>
+</div>
               
-              <div className="mb-4">
-                <h3 className="font-semibold text-gray-900 mb-1">
+              <div className="mb-6">
+                <h3 className="font-semibold text-gray-900 mb-2 text-base">
                   {document?.name || 'Unnamed Document'}
                 </h3>
                 {document?.description && (
-                  <p className="text-sm text-gray-600 line-clamp-2">{document.description}</p>
+                  <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{document.description}</p>
                 )}
               </div>
 
-              <div className="space-y-2 mb-4">
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Type</span>
+              <div className="space-y-3 mb-6">
+                <div className="flex justify-between items-center">
+<div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Type</span>
                   <Badge variant="default">
                     {(document?.type || 'pdf').charAt(0).toUpperCase() + (document?.type || 'pdf').slice(1)}
                   </Badge>
                 </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Size</span>
-                  <span className="text-gray-900">{document?.fileSize || "2.5 MB"}</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Size</span>
+                  <span className="text-sm font-medium text-gray-900">{document?.fileSize || "2.5 MB"}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Updated</span>
-                  <span className="text-gray-900">{document?.lastModified || "2 days ago"}</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Updated</span>
+                  <span className="text-sm font-medium text-gray-900">{document?.lastModified || "2 days ago"}</span>
                 </div>
               </div>
 
-              <Button variant="outline" size="sm" className="w-full">
+              <Button variant="outline" size="md" className="w-full">
                 <ApperIcon name="Eye" className="w-4 h-4 mr-2" />
                 View Document
               </Button>

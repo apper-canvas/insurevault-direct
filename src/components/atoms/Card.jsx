@@ -4,10 +4,10 @@ import { cn } from "@/utils/cn";
 const Card = React.memo(forwardRef(({ 
   className, 
   variant = "default",
-  children, 
-  ...props 
+  children,
+  ...props
 }, ref) => {
-  const baseStyles = "bg-white rounded-lg shadow-sm border border-gray-200";
+  const baseStyles = "bg-white rounded-lg shadow-sm border border-gray-200 p-4";
   
   const variants = {
     default: "bg-white",

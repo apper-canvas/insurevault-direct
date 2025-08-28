@@ -14,12 +14,12 @@ export const claimService = {
     }
     return { ...claim };
   },
-
-  create: async (claimInfo) => {
+create: async (claimInfo) => {
     await new Promise(resolve => setTimeout(resolve, 450));
     const highestId = Math.max(...claimData.map(item => item.Id));
     const newClaim = {
       Id: highestId + 1,
+      claimNumber: `CLM${(highestId + 1).toString().padStart(6, '0')}`,
       ...claimInfo,
       status: "filed",
       filedDate: new Date().toISOString(),
@@ -27,7 +27,9 @@ export const claimService = {
         status: "Filed",
         date: new Date().toISOString(),
         description: "Claim filed successfully"
-      }]
+      }],
+      hasVideoEvidence: !!claimInfo.videoAttachment,
+      videoAttachment: claimInfo.videoAttachment || null
     };
     claimData.push(newClaim);
     return { ...newClaim };

@@ -5,6 +5,7 @@ import Layout from "@/components/organisms/Layout";
 import Dashboard from "@/components/pages/Dashboard";
 import Policies from "@/components/pages/Policies";
 import Claims from "@/components/pages/Claims";
+import ClaimForm from "@/components/pages/ClaimForm";
 import Documents from "@/components/pages/Documents";
 import Profile from "@/components/pages/Profile";
 import AddAsset from "@/components/pages/AddAsset";
@@ -17,8 +18,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
-            <Route path="policies" element={<Policies />} />
+<Route path="policies" element={<Policies />} />
             <Route path="claims" element={<Claims />} />
+            <Route path="claims/new" element={<ClaimForm />} />
             <Route path="documents" element={<Documents />} />
             <Route path="profile" element={<Profile />} />
 <Route path="add-asset" element={<AddAsset />} />

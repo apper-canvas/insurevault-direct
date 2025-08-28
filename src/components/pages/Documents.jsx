@@ -11,7 +11,7 @@ import Empty from "@/components/ui/Empty";
 import Loading from "@/components/ui/Loading";
 
 const Documents = () => {
-const [documents, setDocuments] = useState([]);
+  const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -200,9 +200,9 @@ const handleUploadDocument = () => {
           icon="Upload"
         />
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDocuments.map((document) => (
-            <Card key={document.Id} className="hover:shadow-elevated transition-all duration-300 group">
+            <Card key={document.id} className="hover:shadow-elevated transition-all duration-300 group">
               <div className="flex items-start justify-between mb-4">
                 <div className={`w-12 h-12 bg-gradient-to-br ${getDocumentColor(document.type)} rounded-lg flex items-center justify-center`}>
                   <ApperIcon name={getDocumentIcon(document.type)} className="w-6 h-6" />
@@ -387,16 +387,18 @@ const DocumentUploadModal = ({ onClose, onUpload }) => {
         fileName: selectedFile.name,
         mimeType: selectedFile.type,
         uploadDate: new Date().toISOString()
-      });
+});
 
+      toast.success("Document uploaded successfully!");
       onUpload(); // Refresh the documents list
+onUpload(); // Refresh the documents list
       onClose(); // Close modal
     } catch (error) {
       console.error('Upload failed:', error);
+      toast.error("Failed to upload document. Please try again.");
     } finally {
       setUploading(false);
     }
-  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">

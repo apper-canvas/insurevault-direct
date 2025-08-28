@@ -200,25 +200,30 @@ const handleUploadDocument = () => {
         />
       ) : (
 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredDocuments.map((document) => (
-            <Card key={document.id} className="hover:shadow-elevated transition-all duration-300 group">
+{filteredDocuments?.map((document, index) => (
+            <Card 
+              key={`document-${document?.id || document?.name || index}`} 
+              className="hover:shadow-elevated transition-all duration-300 group"
+            >
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br ${getDocumentColor(document.type)} rounded-lg flex items-center justify-center`}>
-                  <ApperIcon name={getDocumentIcon(document.type)} className="w-6 h-6" />
+                <div className={`w-12 h-12 bg-gradient-to-br ${getDocumentColor(document?.type || 'pdf')} rounded-lg flex items-center justify-center`}>
+                  <ApperIcon name={getDocumentIcon(document?.type || 'pdf')} className="w-6 h-6" />
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" title="Download document">
                     <ApperIcon name="Download" className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" title="Share document">
                     <ApperIcon name="Share" className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
               
               <div className="mb-4">
-                <h3 className="font-semibold text-gray-900 mb-1">{document.name}</h3>
-                {document.description && (
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  {document?.name || 'Unnamed Document'}
+                </h3>
+                {document?.description && (
                   <p className="text-sm text-gray-600 line-clamp-2">{document.description}</p>
                 )}
               </div>
@@ -227,16 +232,16 @@ const handleUploadDocument = () => {
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">Type</span>
                   <Badge variant="default">
-                    {document.type.charAt(0).toUpperCase() + document.type.slice(1)}
+                    {(document?.type || 'pdf').charAt(0).toUpperCase() + (document?.type || 'pdf').slice(1)}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">Size</span>
-                  <span className="text-gray-900">{document.fileSize || "2.5 MB"}</span>
+                  <span className="text-gray-900">{document?.fileSize || "2.5 MB"}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">Updated</span>
-                  <span className="text-gray-900">{document.lastModified || "2 days ago"}</span>
+                  <span className="text-gray-900">{document?.lastModified || "2 days ago"}</span>
                 </div>
               </div>
 
@@ -245,7 +250,11 @@ const handleUploadDocument = () => {
                 View Document
               </Button>
             </Card>
-          ))}
+          )) || (
+            <div className="col-span-full text-center py-8 text-gray-500">
+              No documents available
+            </div>
+          )}
         </div>
       )}
 

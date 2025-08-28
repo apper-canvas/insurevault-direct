@@ -1,33 +1,30 @@
 import React, { forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
-const Card = forwardRef(({ 
+const Card = React.memo(forwardRef(({ 
   className, 
   variant = "default",
   children, 
   ...props 
 }, ref) => {
+  const baseStyles = "bg-white rounded-lg shadow-sm border border-gray-200";
+  
   const variants = {
-    default: "glass-card shadow-card",
-    elevated: "bg-white shadow-elevated border border-gray-100",
-    glass: "glass-card-dark",
-    gradient: "bg-gradient-to-br from-white to-gray-50 shadow-card border border-gray-100",
+    default: "bg-white",
+    elevated: "shadow-lg",
+    glass: "glass-card"
   };
   
   return (
     <div
-      className={cn(
-        "rounded-xl p-6 transition-all duration-200",
-        variants[variant],
-        className
-      )}
       ref={ref}
+      className={cn(baseStyles, variants[variant], className)}
       {...props}
     >
       {children}
     </div>
   );
-});
+}));
 
 Card.displayName = "Card";
 

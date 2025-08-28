@@ -12,6 +12,9 @@ const PolicyCard = ({
   onRenew,
   onClaim,
   onSnooze,
+  isComparison = false,
+  isSelected = false,
+  onSelect,
   ...props 
 }) => {
   const getAssetIcon = (type) => {
@@ -44,14 +47,29 @@ const PolicyCard = ({
 
   const statusInfo = getStatusBadge(policy.status);
 
-  return (
+return (
     <div
       className={cn(
         "glass-card rounded-xl p-6 hover:shadow-elevated transition-all duration-300 group",
+        isComparison && "cursor-pointer relative",
+        isSelected && "ring-2 ring-primary-500 bg-gradient-to-br from-primary-50 to-blue-50",
         className
       )}
+      onClick={isComparison ? onSelect : undefined}
       {...props}
     >
+      {isComparison && (
+        <div className="absolute top-4 right-4">
+          <div className={cn(
+            "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all",
+            isSelected 
+              ? "border-primary-500 bg-primary-500 text-white" 
+              : "border-gray-300 bg-white"
+          )}>
+            {isSelected && <ApperIcon name="Check" className="w-4 h-4" />}
+          </div>
+        </div>
+      )}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
@@ -62,9 +80,14 @@ const PolicyCard = ({
             <p className="text-sm text-gray-500">{policy.insurer}</p>
           </div>
         </div>
-        <Badge variant={statusInfo.variant}>
-          {statusInfo.text}
-        </Badge>
+<div className="flex gap-2">
+          <Badge variant={statusInfo.variant}>
+            {statusInfo.text}
+          </Badge>
+          {policy.isQuote && (
+            <Badge variant="info" className="text-xs">Quote</Badge>
+          )}
+        </div>
       </div>
 
       <div className="space-y-3 mb-6">
@@ -136,44 +159,76 @@ const PolicyCard = ({
         </div>
       )}
 
-<div className="flex gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex-1"
-          onClick={() => onViewDetails?.(policy)}
-        >
-          View Details
-        </Button>
-        {policy.status === "active" && (
-          <>
+{!isComparison && (
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex-1"
+            onClick={() => onViewDetails?.(policy)}
+          >
+            View Details
+          </Button>
+          {policy.status === "active" && (
+            <>
+              <Button
+                variant="primary"
+                size="sm"
+                className="flex-1"
+                onClick={() => onRenew?.(policy)}
+              >
+                <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
+                Renew
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => window.location.href = '/safety'}
+                title="View safety checklist"
+              >
+                <ApperIcon name="ShieldCheck" className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onClaim?.(policy)}
+              >
+                <ApperIcon name="FileText" className="w-4 h-4" />
+              </Button>
+            </>
+          )}
+        </div>
+      )}
+
+      {isComparison && (
+        <div className="mt-4 pt-4 border-t border-gray-200">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-600">
+              {isSelected ? 'Selected for comparison' : 'Click to compare'}
+            </span>
             <Button
-              variant="primary"
+              variant={isSelected ? "primary" : "outline"}
               size="sm"
-              className="flex-1"
-              onClick={() => onRenew?.(policy)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect?.();
+              }}
             >
-              <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
-              Renew
+              {isSelected ? (
+                <>
+                  <ApperIcon name="Check" className="w-4 h-4 mr-2" />
+                  Selected
+                </>
+              ) : (
+                <>
+                  <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
+                  Compare
+                </>
+              )}
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => window.location.href = '/safety'}
-              title="View safety checklist"
-            >
-              <ApperIcon name="ShieldCheck" className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onClaim?.(policy)}
-            >
-              <ApperIcon name="FileText" className="w-4 h-4" />
-            </Button>
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

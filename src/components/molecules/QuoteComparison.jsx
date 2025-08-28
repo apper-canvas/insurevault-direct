@@ -7,6 +7,8 @@ import Badge from "@/components/atoms/Badge";
 const QuoteComparison = ({ 
   quotes = [],
   onSelectQuote,
+  onCompareQuotes,
+  showComparisonButton = false,
   className,
   ...props 
 }) => {
@@ -22,15 +24,26 @@ const QuoteComparison = ({
     setExpandedCard(expandedCard === quoteId ? null : quoteId);
   };
 
-  return (
+return (
     <div className={cn("space-y-6", className)} {...props}>
-      <div className="text-center mb-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          Compare Insurance Plans
-        </h3>
-        <p className="text-gray-600">
-          Choose the best coverage for your needs
-        </p>
+      <div className="flex items-center justify-between mb-6">
+        <div className="text-center flex-1">
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            Compare Insurance Plans
+          </h3>
+          <p className="text-gray-600">
+            Choose the best coverage for your needs
+          </p>
+        </div>
+        {showComparisonButton && quotes.length > 1 && (
+          <Button 
+            variant="outline" 
+            onClick={() => onCompareQuotes?.(quotes)}
+          >
+            <ApperIcon name="BarChart3" className="w-4 h-4 mr-2" />
+            Advanced Compare
+          </Button>
+        )}
       </div>
 
       <div className="grid gap-4">

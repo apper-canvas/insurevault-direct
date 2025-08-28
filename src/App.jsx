@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Layout from "@/components/organisms/Layout";
 import Dashboard from "@/components/pages/Dashboard";
 import Policies from "@/components/pages/Policies";
+import PolicyComparison from "@/components/pages/PolicyComparison";
 import Claims from "@/components/pages/Claims";
 import ClaimForm from "@/components/pages/ClaimForm";
 import Documents from "@/components/pages/Documents";
@@ -16,9 +17,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
-<Route path="policies" element={<Policies />} />
+            <Route path="policies" element={<Policies />} />
+            <Route path="policies/compare" element={<PolicyComparison />} />
             <Route path="claims" element={<Claims />} />
             <Route path="claims/new" element={<ClaimForm />} />
             <Route path="documents" element={<Documents />} />

@@ -1,0 +1,140 @@
+[
+  {
+    "Id": 1,
+    "policyId": 1,
+    "policyNumber": "HDFC123456789",
+    "insurer": "HDFC ERGO",
+    "asset": {
+      "Id": 1,
+      "type": "car",
+      "name": "Honda City 2022"
+    },
+    "amount": 15000,
+    "dueDate": "2024-12-01T00:00:00.000Z",
+    "status": "paid",
+    "paidDate": "2024-11-28T10:30:00.000Z",
+    "paymentMethod": "card",
+    "transactionId": "TXN1732787400123",
+    "description": "Annual premium payment for car insurance",
+    "paymentHistory": [
+      {
+        "date": "2024-11-28T10:30:00.000Z",
+        "amount": 15000,
+        "method": "Credit Card",
+        "transactionId": "TXN1732787400123"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "policyId": 2,
+    "policyNumber": "BA987654321",
+    "insurer": "Bajaj Allianz",
+    "asset": {
+      "Id": 2,
+      "type": "bike",
+      "name": "Honda Activa 125"
+    },
+    "amount": 3500,
+    "dueDate": "2025-01-31T00:00:00.000Z",
+    "status": "upcoming",
+    "description": "Annual premium payment for bike insurance"
+  },
+  {
+    "Id": 3,
+    "policyId": 3,
+    "policyNumber": "IL456789123",
+    "insurer": "ICICI Lombard",
+    "asset": {
+      "Id": 3,
+      "type": "home",
+      "name": "Residential Property"
+    },
+    "amount": 8000,
+    "dueDate": "2024-12-15T00:00:00.000Z",
+    "status": "pending",
+    "description": "Annual premium payment for home insurance"
+  },
+  {
+    "Id": 4,
+    "policyId": 4,
+    "policyNumber": "DIG789123456",
+    "insurer": "Digit Insurance",
+    "asset": {
+      "Id": 4,
+      "type": "gadget",
+      "name": "iPhone 14 Pro"
+    },
+    "amount": 4500,
+    "dueDate": "2024-11-20T00:00:00.000Z",
+    "status": "overdue",
+    "description": "Annual premium payment for gadget insurance"
+  },
+  {
+    "Id": 5,
+    "policyId": 5,
+    "policyNumber": "MB321654987",
+    "insurer": "Max Bupa",
+    "asset": {
+      "Id": 5,
+      "type": "health",
+      "name": "Family Health Plan"
+    },
+    "amount": 25000,
+    "dueDate": "2024-12-30T00:00:00.000Z",
+    "status": "pending",
+    "description": "Annual premium payment for health insurance"
+  },
+  {
+    "Id": 6,
+    "policyId": 1,
+    "policyNumber": "HDFC123456789",
+    "insurer": "HDFC ERGO",
+    "asset": {
+      "Id": 1,
+      "type": "car",
+      "name": "Honda City 2022"
+    },
+    "amount": 14250,
+    "dueDate": "2023-12-01T00:00:00.000Z",
+    "status": "paid",
+    "paidDate": "2023-11-25T14:20:00.000Z",
+    "paymentMethod": "upi",
+    "transactionId": "TXN1700925600456",
+    "description": "Previous year premium payment",
+    "paymentHistory": [
+      {
+        "date": "2023-11-25T14:20:00.000Z",
+        "amount": 14250,
+        "method": "UPI",
+        "transactionId": "TXN1700925600456"
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "policyId": 2,
+    "policyNumber": "BA987654321",
+    "insurer": "Bajaj Allianz",
+    "asset": {
+      "Id": 2,
+      "type": "bike",
+      "name": "Honda Activa 125"
+    },
+    "amount": 3200,
+    "dueDate": "2024-01-31T00:00:00.000Z",
+    "status": "paid",
+    "paidDate": "2024-01-28T09:15:00.000Z",
+    "paymentMethod": "netbanking",
+    "transactionId": "TXN1706428500789",
+    "description": "Previous premium payment",
+    "paymentHistory": [
+      {
+        "date": "2024-01-28T09:15:00.000Z",
+        "amount": 3200,
+        "method": "Net Banking",
+        "transactionId": "TXN1706428500789"
+      }
+    ]
+  }
+]

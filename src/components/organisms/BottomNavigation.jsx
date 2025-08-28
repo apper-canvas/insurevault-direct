@@ -3,25 +3,22 @@ import { NavLink } from "react-router-dom";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
 
-const BottomNavigation = ({ className }) => {
+const BottomNavigation = () => {
   const navItems = [
-    { to: "/", icon: "Home", label: "Home" },
-    { to: "/policies", icon: "Shield", label: "Policies" },
-    { to: "/safety", icon: "ShieldCheck", label: "Safety" },
-    { to: "/claims", icon: "FileText", label: "Claims" },
-    { to: "/profile", icon: "User", label: "Profile" }
+    { path: "/", icon: "Home", label: "Home" },
+    { path: "/policies", icon: "Shield", label: "Policies" },
+    { path: "/claims", icon: "FileText", label: "Claims" },
+    { path: "/payments", icon: "CreditCard", label: "Payments" },
+    { path: "/profile", icon: "User", label: "Profile" },
   ];
 
   return (
-    <nav className={cn(
-      "fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-glass border-t border-gray-200 z-50",
-      className
-    )}>
-      <div className="grid grid-cols-5 h-16">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 lg:hidden">
+<div className="flex items-center justify-around max-w-md mx-auto">
         {navItems.map((item) => (
           <NavLink
-            key={item.to}
-            to={item.to}
+            key={item.path}
+            to={item.path}
             className={({ isActive }) => cn(
               "flex flex-col items-center justify-center gap-1 transition-all duration-200 relative",
               isActive 

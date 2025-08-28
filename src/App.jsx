@@ -5,6 +5,7 @@ import EmergencyAssistance from "@/components/pages/EmergencyAssistance";
 import ClaimForm from "@/components/pages/ClaimForm";
 import Claims from "@/components/pages/Claims";
 import Policies from "@/components/pages/Policies";
+import PolicyDetails from "@/components/pages/PolicyDetails";
 import PolicyComparison from "@/components/pages/PolicyComparison";
 import SafetyChecklists from "@/components/pages/SafetyChecklists";
 import Dashboard from "@/components/pages/Dashboard";
@@ -21,8 +22,9 @@ function App() {
       <div className="App">
 <Routes>
 <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
+<Route index element={<Dashboard />} />
             <Route path="policies" element={<Policies />} />
+            <Route path="policies/:id" element={<PolicyDetails />} />
             <Route path="policies/compare" element={<PolicyComparison />} />
             <Route path="claims" element={<Claims />} />
             <Route path="claims/new" element={<ClaimForm />} />

@@ -11,6 +11,7 @@ const PolicyCard = ({
   onViewDetails,
   onRenew,
   onClaim,
+  onSnooze,
   ...props 
 }) => {
   const getAssetIcon = (type) => {
@@ -100,13 +101,37 @@ const PolicyCard = ({
         )}
       </div>
 
-      {isExpiringSoon() && (
-        <div className="bg-gradient-to-r from-warning/10 to-yellow-100 border border-warning/20 rounded-lg p-3 mb-4">
-          <div className="flex items-center gap-2">
-            <ApperIcon name="Clock" className="w-4 h-4 text-warning" />
-            <p className="text-sm text-warning font-medium">
-              Expires in {Math.ceil((new Date(policy.endDate) - new Date()) / (1000 * 60 * 60 * 24))} days
-            </p>
+{isExpiringSoon() && !policy.snoozedUntil && (
+        <div className="bg-gradient-to-r from-warning/10 to-yellow-100 border border-warning/20 rounded-lg p-4 mb-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <ApperIcon name="Clock" className="w-5 h-5 text-warning" />
+              <div>
+                <p className="text-sm text-warning font-semibold">
+                  Renewal Reminder
+                </p>
+                <p className="text-xs text-warning/80">
+                  Expires in {Math.ceil((new Date(policy.endDate) - new Date()) / (1000 * 60 * 60 * 24))} days
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-warning hover:bg-warning/10"
+                onClick={() => onSnooze?.(policy)}
+              >
+                <ApperIcon name="X" className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="success"
+                size="sm"
+                onClick={() => onRenew?.(policy)}
+              >
+                Renew Now
+              </Button>
+            </div>
           </div>
         </div>
       )}
@@ -121,13 +146,14 @@ const PolicyCard = ({
           View Details
         </Button>
         {policy.status === "active" && (
-          <>
+<>
             <Button
               variant="primary"
               size="sm"
               className="flex-1"
               onClick={() => onRenew?.(policy)}
             >
+              <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
               Renew
             </Button>
             <Button

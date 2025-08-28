@@ -29,13 +29,37 @@ export const policyService = {
     return { ...newPolicy };
   },
 
-  update: async (id, updateData) => {
+update: async (id, updateData) => {
     await new Promise(resolve => setTimeout(resolve, 400));
     const index = policyData.findIndex(item => item.Id === parseInt(id));
     if (index === -1) {
       throw new Error("Policy not found");
     }
     policyData[index] = { ...policyData[index], ...updateData };
+    return { ...policyData[index] };
+  },
+
+  snooze: async (id) => {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const index = policyData.findIndex(item => item.Id === parseInt(id));
+    if (index === -1) {
+      throw new Error("Policy not found");
+    }
+    const snoozeDate = new Date();
+    snoozeDate.setDate(snoozeDate.getDate() + 7); // Snooze for 7 days
+    policyData[index].snoozedUntil = snoozeDate.toISOString();
+    return { ...policyData[index] };
+  },
+
+  renew: async (id) => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const index = policyData.findIndex(item => item.Id === parseInt(id));
+    if (index === -1) {
+      throw new Error("Policy not found");
+    }
+    // Mark policy as renewal initiated
+    policyData[index].renewalStatus = "initiated";
+    policyData[index].renewalInitiatedAt = new Date().toISOString();
     return { ...policyData[index] };
   },
 

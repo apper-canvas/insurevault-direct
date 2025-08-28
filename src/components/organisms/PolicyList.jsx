@@ -37,11 +37,26 @@ const PolicyList = ({ limit, showHeader = true, className }) => {
     navigate(`/policies/${policy.Id}`);
   };
 
-  const handleRenew = (policy) => {
-    toast.info(`Renewal process started for ${policy.asset?.name}`);
-    navigate(`/policies/${policy.Id}/renew`);
+const handleRenew = async (policy) => {
+    try {
+      toast.info(`Initiating renewal for ${policy.asset?.name}...`);
+      await policyService.renew(policy.Id);
+      toast.success(`Renewal process started for ${policy.asset?.name}`);
+      navigate(`/policies/${policy.Id}/renew`);
+    } catch (error) {
+      toast.error(`Failed to start renewal: ${error.message}`);
+    }
   };
 
+  const handleSnooze = async (policy) => {
+    try {
+      await policyService.snooze(policy.Id);
+      toast.success(`Renewal reminder snoozed for ${policy.asset?.name}`);
+      loadPolicies(); // Refresh to hide snoozed reminder
+    } catch (error) {
+      toast.error(`Failed to snooze reminder: ${error.message}`);
+    }
+  };
   const handleClaim = (policy) => {
     navigate(`/claims/new?policyId=${policy.Id}`);
   };
@@ -86,13 +101,14 @@ const PolicyList = ({ limit, showHeader = true, className }) => {
       )}
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {policies.map((policy) => (
+{policies.map((policy) => (
           <PolicyCard
             key={policy.Id}
             policy={policy}
             onViewDetails={handleViewDetails}
             onRenew={handleRenew}
             onClaim={handleClaim}
+            onSnooze={handleSnooze}
           />
         ))}
       </div>

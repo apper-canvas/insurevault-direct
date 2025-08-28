@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { dashboardService } from "@/services/api/dashboardService";
+import ApperIcon from "@/components/ApperIcon";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
+import ClaimsList from "@/components/organisms/ClaimsList";
 import DashboardStats from "@/components/organisms/DashboardStats";
 import PolicyList from "@/components/organisms/PolicyList";
-import ClaimsList from "@/components/organisms/ClaimsList";
-import Button from "@/components/atoms/Button";
-import Card from "@/components/atoms/Card";
-import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-import { dashboardService } from "@/services/api/dashboardService";
+import Loading from "@/components/ui/Loading";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -127,32 +128,92 @@ const Dashboard = () => {
       </div>
 
       {/* Upcoming Renewals */}
-      <Card>
+<Card>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-gray-900">Upcoming Renewals</h2>
+          <h2 className="text-xl font-semibold text-gray-900">Renewal Reminders</h2>
           <Button variant="ghost" size="sm" onClick={() => navigate("/policies")}>
             View All
           </Button>
         </div>
         <div className="space-y-3">
           {upcomingRenewals.map((renewal) => (
-            <div key={renewal.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
-                  <ApperIcon 
-                    name={renewal.type === "car" ? "Car" : renewal.type === "home" ? "Home" : "Heart"} 
-                    className="w-5 h-5 text-primary-600" 
-                  />
+            <div 
+              key={renewal.id} 
+              className={`p-4 rounded-lg border transition-all hover:shadow-md ${
+                renewal.daysLeft <= 15 
+                  ? 'bg-gradient-to-r from-red-50 to-orange-50 border-red-200' 
+                  : renewal.daysLeft <= 30
+                  ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-200'
+                  : 'bg-gray-50 border-gray-200'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    renewal.daysLeft <= 15
+                      ? 'bg-gradient-to-br from-red-100 to-red-200'
+                      : renewal.daysLeft <= 30
+                      ? 'bg-gradient-to-br from-yellow-100 to-yellow-200'
+                      : 'bg-gradient-to-br from-primary-100 to-primary-200'
+                  }`}>
+                    <ApperIcon 
+                      name={renewal.type === "car" ? "Car" : renewal.type === "home" ? "Home" : "Heart"} 
+                      className={`w-5 h-5 ${
+                        renewal.daysLeft <= 15
+                          ? 'text-red-600'
+                          : renewal.daysLeft <= 30
+                          ? 'text-yellow-600'
+                          : 'text-primary-600'
+                      }`}
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{renewal.name}</p>
+                    <p className="text-sm text-gray-500">{renewal.insurer}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-medium text-gray-900">{renewal.name}</p>
-                  <p className="text-sm text-gray-500">{renewal.insurer}</p>
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <Badge variant={renewal.daysLeft <= 15 ? "error" : renewal.daysLeft <= 30 ? "warning" : "default"}>
+                      {renewal.daysLeft <= 15 && <ApperIcon name="AlertTriangle" className="w-3 h-3 mr-1" />}
+                      {renewal.daysLeft} days left
+                    </Badge>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-gray-500 hover:text-gray-700"
+onClick={() => {
+                        try {
+                          // Snooze functionality
+                          const updatedRenewals = upcomingRenewals.filter(r => r.id !== renewal.id);
+                          // Update state logic would go here
+                          toast.success(`Reminder snoozed for ${renewal.name}`);
+                        } catch (error) {
+                          toast.error("Failed to snooze reminder");
+                        }
+                      }}
+                    >
+                      <ApperIcon name="X" className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      variant="success"
+                      size="sm"
+onClick={() => {
+                        try {
+                          toast.info(`Starting renewal process for ${renewal.name}...`);
+                          navigate("/policies");
+                        } catch (error) {
+                          toast.error("Failed to start renewal process");
+                        }
+                      }}
+                    >
+                      <ApperIcon name="RefreshCw" className="w-4 h-4 mr-1" />
+                      Renew
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className="text-right">
-                <Badge variant={renewal.daysLeft <= 30 ? "warning" : "default"}>
-                  {renewal.daysLeft} days left
-                </Badge>
               </div>
             </div>
           ))}

@@ -296,6 +296,18 @@ const DocumentUploadModal = ({ onClose, onUpload }) => {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
 
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape' && !uploading) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [onClose, uploading]);
+
   const documentTypes = [
     { value: "policy", label: "Policy Document" },
     { value: "claim", label: "Claim Form" },
@@ -412,14 +424,28 @@ const DocumentUploadModal = ({ onClose, onUpload }) => {
 return (
 <div 
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 pointer-events-auto"
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onClick={(e) => {
+        if (e.target === e.currentTarget && !uploading) {
+          onClose();
+        }
+      }}
     >
-<div className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in overflow-hidden pointer-events-auto">
+<div 
+        className="bg-white rounded-2xl shadow-elevated max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in overflow-hidden pointer-events-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="p-6 overflow-y-auto scroll-smooth flex-1">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900">Upload Document</h2>
-            <Button variant="ghost" size="sm" onClick={onClose}>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={onClose}
+              disabled={uploading}
+              className="hover:bg-gray-100 hover:scale-110 transition-all duration-200"
+              title="Close modal (Esc)"
+            >
               <ApperIcon name="X" className="w-4 h-4" />
             </Button>
           </div>
@@ -520,14 +546,16 @@ return (
             </div>
 
             {/* Actions */}
-            <div className="flex gap-3 pt-4">
+<div className="flex gap-3 pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1"
+                className="flex-1 hover:bg-gray-50 transition-colors duration-200"
                 disabled={uploading}
+                title="Cancel upload and close modal"
               >
+                <ApperIcon name="X" className="w-4 h-4 mr-2" />
                 Cancel
               </Button>
               <Button

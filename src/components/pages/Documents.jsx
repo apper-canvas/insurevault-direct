@@ -534,7 +534,7 @@ return (
                 type="submit"
                 variant="primary"
                 className="flex-1"
-                disabled={uploading || !selectedFile}
+disabled={uploading || !selectedFile}
               >
                 {uploading ? (
                   <>

@@ -103,8 +103,8 @@ const handleSnooze = async (policy) => {
         </div>
       )}
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-{policies.map((policy) => (
+<div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {policies.map((policy) => (
           <PolicyCard
             key={policy.Id}
             policy={policy}
@@ -112,6 +112,7 @@ const handleSnooze = async (policy) => {
             onRenew={handleRenew}
             onClaim={handleClaim}
             onSnooze={handleSnooze}
+            className="hover:scale-[1.02] transition-transform duration-200"
           />
         ))}
       </div>

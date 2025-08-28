@@ -21,14 +21,14 @@ const Policies = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="glass-card rounded-xl p-6">
+{/* Header */}
+      <div className="glass-card rounded-xl p-6 bg-gradient-to-r from-primary-50 via-blue-50 to-purple-50 border border-primary-200/50">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Policies</h1>
+            <h1 className="text-2xl font-bold gradient-text">My Policies</h1>
             <p className="text-gray-600">Manage all your insurance policies in one place</p>
           </div>
-          <Button variant="primary" onClick={() => navigate("/add-asset")}>
+          <Button variant="primary" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-lg" onClick={() => navigate("/add-asset")}>
             <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
             Add New Policy
           </Button>
@@ -65,38 +65,38 @@ const Policies = () => {
         </div>
       </div>
 
-      {/* Policy Stats */}
+{/* Policy Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="Shield" className="w-5 h-5 text-primary-600" />
+        <div className="glass-card rounded-xl p-4 text-center bg-gradient-to-br from-blue-50 to-primary-50 border border-primary-200/30 hover:shadow-lg transition-all duration-300">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+            <ApperIcon name="Shield" className="w-5 h-5 text-white" />
           </div>
-          <p className="text-2xl font-bold gradient-text">5</p>
-          <p className="text-sm text-gray-600">Active Policies</p>
+          <p className="text-2xl font-bold text-primary-600">5</p>
+          <p className="text-sm text-gray-600 font-medium">Active Policies</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-accent-100 to-accent-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="TrendingUp" className="w-5 h-5 text-accent-600" />
+        <div className="glass-card rounded-xl p-4 text-center bg-gradient-to-br from-emerald-50 to-accent-50 border border-accent-200/30 hover:shadow-lg transition-all duration-300">
+          <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+            <ApperIcon name="TrendingUp" className="w-5 h-5 text-white" />
           </div>
-          <p className="text-2xl font-bold gradient-text">₹25L</p>
-          <p className="text-sm text-gray-600">Total Coverage</p>
+          <p className="text-2xl font-bold text-accent-600">₹25L</p>
+          <p className="text-sm text-gray-600 font-medium">Total Coverage</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-warning/20 to-warning/30 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="Clock" className="w-5 h-5 text-warning" />
+        <div className="glass-card rounded-xl p-4 text-center bg-gradient-to-br from-orange-50 to-yellow-50 border border-orange-200/30 hover:shadow-lg transition-all duration-300">
+          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+            <ApperIcon name="Clock" className="w-5 h-5 text-white" />
           </div>
-          <p className="text-2xl font-bold text-warning">2</p>
-          <p className="text-sm text-gray-600">Expiring Soon</p>
+          <p className="text-2xl font-bold text-orange-600">2</p>
+          <p className="text-sm text-gray-600 font-medium">Expiring Soon</p>
         </div>
         
-        <div className="glass-card rounded-xl p-4 text-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-            <ApperIcon name="PiggyBank" className="w-5 h-5 text-green-600" />
+        <div className="glass-card rounded-xl p-4 text-center bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200/30 hover:shadow-lg transition-all duration-300">
+          <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+            <ApperIcon name="PiggyBank" className="w-5 h-5 text-white" />
           </div>
           <p className="text-2xl font-bold text-green-600">₹15K</p>
-          <p className="text-sm text-gray-600">Annual Savings</p>
+          <p className="text-sm text-gray-600 font-medium">Annual Savings</p>
         </div>
       </div>
 

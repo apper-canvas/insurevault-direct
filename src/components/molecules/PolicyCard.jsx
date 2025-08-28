@@ -78,10 +78,10 @@ return (
     </div>}
 <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-lg flex items-center justify-center shadow-lg">
                 <ApperIcon
                     name={getAssetIcon(policy.asset?.type)}
-                    className="w-6 h-6 text-primary-600" />
+                    className="w-6 h-6 text-white" />
             </div>
             <div>
 <div className="flex items-center justify-between mb-2">
@@ -138,7 +138,7 @@ return (
                 </div>
                 
 {isExpiringSoon() && !policy.snoozedUntil && (
-                    <div className="bg-gradient-to-r from-warning/10 to-yellow-100 border border-warning/20 rounded-lg p-4 mb-4">
+                    <div className="bg-gradient-to-r from-orange-50 via-yellow-50 to-amber-50 border border-orange-200 rounded-lg p-4 mb-4 shadow-sm">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <ApperIcon name="Clock" className="w-5 h-5 text-warning" />
@@ -171,12 +171,12 @@ return (
                     </div>
                 )}
                 
-                {!isComparison && (
+{!isComparison && (
                     <div className="flex gap-2">
                         <Button
                             variant="outline"
                             size="sm"
-                            className="flex-1"
+                            className="flex-1 border-primary-300 text-primary-700 hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50"
                             onClick={() => onViewDetails?.(policy)}>
                             View Details
                         </Button>
@@ -185,7 +185,7 @@ return (
                                 <Button
                                     variant="primary"
                                     size="sm"
-                                    className="flex-1"
+                                    className="flex-1 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-md"
                                     onClick={() => onRenew?.(policy)}>
                                     <ApperIcon name="RefreshCw" className="w-4 h-4 mr-2" />
                                     Renew
@@ -193,11 +193,16 @@ return (
                                 <Button
                                     variant="ghost"
                                     size="sm"
+                                    className="text-accent-600 hover:bg-accent-50 hover:text-accent-700"
                                     onClick={() => window.location.href = "/safety"}
                                     title="View safety checklist">
                                     <ApperIcon name="ShieldCheck" className="w-4 h-4" />
                                 </Button>
-                                <Button variant="ghost" size="sm" onClick={() => onClaim?.(policy)}>
+                                <Button 
+                                    variant="ghost" 
+                                    size="sm" 
+                                    className="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-700"
+                                    onClick={() => onClaim?.(policy)}>
                                     <ApperIcon name="FileText" className="w-4 h-4" />
                                 </Button>
                             </>

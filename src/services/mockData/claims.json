@@ -1,0 +1,117 @@
+[
+  {
+    "Id": 1,
+    "policyId": 1,
+    "policyNumber": "HDFC123456789",
+    "type": "Accident Damage",
+    "status": "processing",
+    "amount": 45000,
+    "filedDate": "2024-11-01T10:30:00.000Z",
+    "description": "Front bumper damage due to collision at traffic signal. Vehicle is drivable but needs repair.",
+    "documents": ["accident_photos.jpg", "police_report.pdf", "damage_estimate.pdf"],
+    "timeline": [
+      {
+        "status": "Filed",
+        "date": "2024-11-01T10:30:00.000Z",
+        "description": "Claim filed successfully"
+      },
+      {
+        "status": "Under Review",
+        "date": "2024-11-02T14:15:00.000Z",
+        "description": "Claim is being reviewed by insurance team"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "policyId": 5,
+    "policyNumber": "MB321654987",
+    "type": "Hospitalization",
+    "status": "approved",
+    "amount": 85000,
+    "filedDate": "2024-10-15T08:45:00.000Z",
+    "description": "Emergency appendix surgery at Apollo Hospital. 3 days hospitalization required.",
+    "documents": ["medical_bills.pdf", "discharge_summary.pdf", "lab_reports.pdf"],
+    "timeline": [
+      {
+        "status": "Filed",
+        "date": "2024-10-15T08:45:00.000Z",
+        "description": "Claim filed successfully"
+      },
+      {
+        "status": "Approved",
+        "date": "2024-10-18T16:20:00.000Z",
+        "description": "Claim approved after medical review"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "policyId": 4,
+    "policyNumber": "DIG789123456",
+    "type": "Screen Damage",
+    "status": "settled",
+    "amount": 15000,
+    "filedDate": "2024-09-25T12:00:00.000Z",
+    "description": "iPhone screen cracked after accidental drop. Device is functional but screen needs replacement.",
+    "documents": ["damage_photos.jpg", "repair_estimate.pdf"],
+    "timeline": [
+      {
+        "status": "Filed",
+        "date": "2024-09-25T12:00:00.000Z",
+        "description": "Claim filed successfully"
+      },
+      {
+        "status": "Approved",
+        "date": "2024-09-27T10:30:00.000Z",
+        "description": "Claim approved"
+      },
+      {
+        "status": "Settled",
+        "date": "2024-09-30T14:45:00.000Z",
+        "description": "Settlement amount credited"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "policyId": 2,
+    "policyNumber": "BA987654321",
+    "type": "Theft",
+    "status": "filed",
+    "amount": 35000,
+    "filedDate": "2024-11-10T18:30:00.000Z",
+    "description": "Two-wheeler stolen from parking area. FIR filed with local police station.",
+    "documents": ["fir_copy.pdf", "rc_copy.pdf"],
+    "timeline": [
+      {
+        "status": "Filed",
+        "date": "2024-11-10T18:30:00.000Z",
+        "description": "Claim filed successfully"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "policyId": 3,
+    "policyNumber": "IL456789123",
+    "type": "Water Damage",
+    "status": "rejected",
+    "amount": 120000,
+    "filedDate": "2024-08-20T09:15:00.000Z",
+    "description": "Property damage due to heavy monsoon flooding. Ground floor furniture and appliances damaged.",
+    "documents": ["damage_photos.jpg", "repair_estimates.pdf"],
+    "timeline": [
+      {
+        "status": "Filed",
+        "date": "2024-08-20T09:15:00.000Z",
+        "description": "Claim filed successfully"
+      },
+      {
+        "status": "Rejected",
+        "date": "2024-08-25T11:30:00.000Z",
+        "description": "Claim rejected due to policy exclusions for flood damage"
+      }
+    ]
+  }
+]

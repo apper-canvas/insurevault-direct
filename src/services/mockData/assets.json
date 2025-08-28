@@ -1,0 +1,54 @@
+[
+  {
+    "Id": 1,
+    "type": "car",
+    "name": "Honda City 2022",
+    "identifiers": {
+      "rc": "MH01AB1234",
+      "vin": "MBJKS1234567890123"
+    },
+    "images": [],
+    "createdAt": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "Id": 2,
+    "type": "bike",
+    "name": "Honda Activa 125",
+    "identifiers": {
+      "rc": "MH02CD5678",
+      "vin": "MD2A1234567890123"
+    },
+    "images": [],
+    "createdAt": "2024-02-20T14:15:00.000Z"
+  },
+  {
+    "Id": 3,
+    "type": "home",
+    "name": "Residential Property",
+    "identifiers": {
+      "address": "123 Main Street, Mumbai, MH 400001"
+    },
+    "images": [],
+    "createdAt": "2024-03-10T09:45:00.000Z"
+  },
+  {
+    "Id": 4,
+    "type": "gadget",
+    "name": "iPhone 14 Pro",
+    "identifiers": {
+      "imei": "123456789012345"
+    },
+    "images": [],
+    "createdAt": "2024-04-05T16:20:00.000Z"
+  },
+  {
+    "Id": 5,
+    "type": "health",
+    "name": "Family Health Plan",
+    "identifiers": {
+      "healthId": "HID123456789"
+    },
+    "images": [],
+    "createdAt": "2024-05-12T11:10:00.000Z"
+  }
+]

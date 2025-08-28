@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "assetId": 1,
+    "asset": {
+      "Id": 1,
+      "type": "car",
+      "name": "Honda City 2022"
+    },
+    "insurer": "HDFC ERGO",
+    "policyNumber": "HDFC123456789",
+    "premium": 15000,
+    "coverageAmount": 500000,
+    "startDate": "2024-01-01T00:00:00.000Z",
+    "endDate": "2024-12-31T23:59:59.000Z",
+    "status": "active",
+    "documents": ["policy_certificate.pdf", "terms_conditions.pdf"],
+    "ncb": 20
+  },
+  {
+    "Id": 2,
+    "assetId": 2,
+    "asset": {
+      "Id": 2,
+      "type": "bike",
+      "name": "Honda Activa 125"
+    },
+    "insurer": "Bajaj Allianz",
+    "policyNumber": "BA987654321",
+    "premium": 3500,
+    "coverageAmount": 100000,
+    "startDate": "2024-02-01T00:00:00.000Z",
+    "endDate": "2025-01-31T23:59:59.000Z",
+    "status": "active",
+    "documents": ["policy_certificate.pdf"],
+    "ncb": 10
+  },
+  {
+    "Id": 3,
+    "assetId": 3,
+    "asset": {
+      "Id": 3,
+      "type": "home",
+      "name": "Residential Property"
+    },
+    "insurer": "ICICI Lombard",
+    "policyNumber": "IL456789123",
+    "premium": 8000,
+    "coverageAmount": 2000000,
+    "startDate": "2024-03-01T00:00:00.000Z",
+    "endDate": "2025-02-28T23:59:59.000Z",
+    "status": "active",
+    "documents": ["policy_certificate.pdf", "property_valuation.pdf"],
+    "ncb": 0
+  },
+  {
+    "Id": 4,
+    "assetId": 4,
+    "asset": {
+      "Id": 4,
+      "type": "gadget",
+      "name": "iPhone 14 Pro"
+    },
+    "insurer": "Digit Insurance",
+    "policyNumber": "DIG789123456",
+    "premium": 4500,
+    "coverageAmount": 120000,
+    "startDate": "2024-04-01T00:00:00.000Z",
+    "endDate": "2025-03-31T23:59:59.000Z",
+    "status": "active",
+    "documents": ["policy_certificate.pdf"],
+    "ncb": 0
+  },
+  {
+    "Id": 5,
+    "assetId": 5,
+    "asset": {
+      "Id": 5,
+      "type": "health",
+      "name": "Family Health Plan"
+    },
+    "insurer": "Max Bupa",
+    "policyNumber": "MB321654987",
+    "premium": 25000,
+    "coverageAmount": 1000000,
+    "startDate": "2024-05-01T00:00:00.000Z",
+    "endDate": "2025-04-30T23:59:59.000Z",
+    "status": "active",
+    "documents": ["policy_certificate.pdf", "health_card.pdf"],
+    "ncb": 0
+  }
+]

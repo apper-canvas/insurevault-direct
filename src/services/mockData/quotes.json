@@ -1,0 +1,115 @@
+[
+  {
+    "Id": 1,
+    "assetId": 1,
+    "insurer": "HDFC ERGO",
+    "planName": "Comprehensive Plan",
+    "premium": 15000,
+    "coverage": {
+      "amount": 500000,
+      "deductible": 5000
+    },
+    "features": [
+      "Cashless Claims at 5000+ Garages",
+      "24/7 Roadside Assistance",
+      "Zero Depreciation Cover",
+      "Personal Accident Cover",
+      "Return to Invoice Cover"
+    ],
+    "exclusions": [
+      "Consequential losses",
+      "Mechanical breakdown",
+      "Normal wear and tear"
+    ]
+  },
+  {
+    "Id": 2,
+    "assetId": 1,
+    "insurer": "Bajaj Allianz",
+    "planName": "Gold Plan",
+    "premium": 14500,
+    "coverage": {
+      "amount": 500000,
+      "deductible": 7500
+    },
+    "features": [
+      "Cashless Claims at 4500+ Garages",
+      "24/7 Customer Support",
+      "Engine Protection Cover",
+      "NCB Protection",
+      "Consumables Cover"
+    ],
+    "exclusions": [
+      "Pre-existing damage",
+      "Racing or competitions",
+      "Nuclear risks"
+    ]
+  },
+  {
+    "Id": 3,
+    "assetId": 1,
+    "insurer": "ICICI Lombard",
+    "planName": "Premium Shield",
+    "premium": 16500,
+    "coverage": {
+      "amount": 500000,
+      "deductible": 3000
+    },
+    "features": [
+      "Cashless Claims at 6000+ Network",
+      "Annual Health Check-up",
+      "Emergency Assistance",
+      "Tyre Protection Cover",
+      "Key Replacement Cover"
+    ],
+    "exclusions": [
+      "Intentional damage",
+      "Unlicensed driving",
+      "Commercial use"
+    ]
+  },
+  {
+    "Id": 4,
+    "assetId": 2,
+    "insurer": "Bajaj Allianz",
+    "planName": "Two Wheeler Plan",
+    "premium": 3500,
+    "coverage": {
+      "amount": 100000,
+      "deductible": 2000
+    },
+    "features": [
+      "Cashless Claims",
+      "Personal Accident Cover",
+      "Third Party Coverage",
+      "Roadside Assistance"
+    ],
+    "exclusions": [
+      "Racing activities",
+      "Unlicensed driving",
+      "Commercial use"
+    ]
+  },
+  {
+    "Id": 5,
+    "assetId": 3,
+    "insurer": "ICICI Lombard",
+    "planName": "Home Insurance",
+    "premium": 8000,
+    "coverage": {
+      "amount": 2000000,
+      "deductible": 10000
+    },
+    "features": [
+      "Fire and Allied Perils",
+      "Burglary Protection",
+      "Electronic Equipment Cover",
+      "Alternative Accommodation"
+    ],
+    "exclusions": [
+      "Earthquake damage",
+      "Flood damage",
+      "War and terrorism"
+    ]
+  }
+]

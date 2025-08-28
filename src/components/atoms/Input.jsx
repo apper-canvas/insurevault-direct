@@ -19,7 +19,7 @@ const Input = forwardRef(({
       <input
         type={type}
         className={cn(
-"block w-full px-3 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-gray-400",
+          "block w-full px-3 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200",
           error && "border-error focus:ring-error focus:border-error",
           className
         )}

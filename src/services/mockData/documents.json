@@ -98,5 +98,79 @@
     "lastModified": "2024-04-05T16:20:00.000Z",
     "policyId": 4,
     "url": "/documents/gadget-card.pdf"
+  },
+  {
+    "Id": 11,
+    "name": "Driver's License",
+    "type": "license",
+    "description": "Valid driver's license for vehicle insurance verification",
+    "fileSize": "1.1 MB",
+    "lastModified": "2024-03-22T14:30:00.000Z",
+    "url": "/documents/drivers-license.jpg"
+  },
+  {
+    "Id": 12,
+    "name": "Aadhaar Card",
+    "type": "id",
+    "description": "Government issued identity document",
+    "fileSize": "0.9 MB",
+    "lastModified": "2024-01-10T09:15:00.000Z",
+    "url": "/documents/aadhaar-card.pdf"
+  },
+  {
+    "Id": 13,
+    "name": "Passport Copy",
+    "type": "id",
+    "description": "Valid passport for international travel insurance",
+    "fileSize": "2.1 MB",
+    "lastModified": "2024-02-05T11:45:00.000Z",
+    "url": "/documents/passport-copy.pdf"
+  },
+  {
+    "Id": 14,
+    "name": "Vehicle Repair Bill",
+    "type": "repair",
+    "description": "Car service and repair invoice from authorized dealer",
+    "fileSize": "1.3 MB",
+    "lastModified": "2024-10-28T16:20:00.000Z",
+    "claimId": 1,
+    "url": "/documents/vehicle-repair-bill.pdf"
+  },
+  {
+    "Id": 15,
+    "name": "Phone Repair Receipt",
+    "type": "repair",
+    "description": "iPhone screen replacement bill from authorized service center",
+    "fileSize": "0.7 MB",
+    "lastModified": "2024-09-30T13:10:00.000Z",
+    "claimId": 3,
+    "url": "/documents/phone-repair-receipt.pdf"
+  },
+  {
+    "Id": 16,
+    "name": "Birth Certificate",
+    "type": "personal",
+    "description": "Birth certificate for dependent insurance coverage",
+    "fileSize": "1.0 MB",
+    "lastModified": "2024-04-15T10:30:00.000Z",
+    "url": "/documents/birth-certificate.pdf"
+  },
+  {
+    "Id": 17,
+    "name": "Marriage Certificate",
+    "type": "personal",
+    "description": "Marriage certificate for spouse insurance coverage",
+    "fileSize": "1.2 MB",
+    "lastModified": "2024-05-01T12:00:00.000Z",
+    "url": "/documents/marriage-certificate.pdf"
+  },
+  {
+    "Id": 18,
+    "name": "Bank Statement",
+    "type": "personal",
+    "description": "Monthly bank statement for premium payment verification",
+    "fileSize": "2.5 MB",
+    "lastModified": "2024-11-01T08:30:00.000Z",
+    "url": "/documents/bank-statement.pdf"
   }
 ]

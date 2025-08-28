@@ -33,12 +33,16 @@ const Documents = () => {
     loadDocuments();
   }, []);
 
-  const documentTypes = [
+const documentTypes = [
     { value: "all", label: "All Documents", icon: "FolderOpen" },
-    { value: "policy", label: "Policy Cards", icon: "Shield" },
+    { value: "policy", label: "Policy Documents", icon: "Shield" },
     { value: "claim", label: "Claim Documents", icon: "FileText" },
     { value: "certificate", label: "Certificates", icon: "Award" },
-    { value: "receipt", label: "Receipts", icon: "Receipt" }
+    { value: "receipt", label: "Receipts", icon: "Receipt" },
+    { value: "id", label: "ID Cards", icon: "CreditCard" },
+    { value: "license", label: "Driver's License", icon: "Car" },
+    { value: "repair", label: "Repair Bills", icon: "Wrench" },
+    { value: "personal", label: "Personal Documents", icon: "User" }
   ];
 
   const getDocumentIcon = (type) => {
@@ -47,8 +51,13 @@ const Documents = () => {
       claim: "FileText",
       certificate: "Award",
       receipt: "Receipt",
-      photo: "Image",
-      pdf: "FileText"
+photo: "Image",
+      pdf: "FileText",
+      doc: "FileText",
+      docx: "FileText",
+      jpg: "Image",
+      jpeg: "Image",
+      png: "Image"
     };
     return icons[type] || "File";
   };
@@ -57,9 +66,13 @@ const Documents = () => {
     const colors = {
       policy: "from-primary-100 to-primary-200 text-primary-600",
       claim: "from-orange-100 to-orange-200 text-orange-600",
-      certificate: "from-green-100 to-green-200 text-green-600",
+certificate: "from-green-100 to-green-200 text-green-600",
       receipt: "from-purple-100 to-purple-200 text-purple-600",
       photo: "from-blue-100 to-blue-200 text-blue-600",
+      id: "from-indigo-100 to-indigo-200 text-indigo-600",
+      license: "from-yellow-100 to-yellow-200 text-yellow-600",
+      repair: "from-red-100 to-red-200 text-red-600",
+      personal: "from-teal-100 to-teal-200 text-teal-600",
       pdf: "from-red-100 to-red-200 text-red-600"
     };
     return colors[type] || "from-gray-100 to-gray-200 text-gray-600";
@@ -89,7 +102,7 @@ const Documents = () => {
             <h1 className="text-2xl font-bold text-gray-900">My Documents</h1>
             <p className="text-gray-600">Access all your insurance documents and certificates</p>
           </div>
-          <Button variant="primary">
+<Button variant="primary" className="shadow-lg hover:shadow-xl">
             <ApperIcon name="Upload" className="w-4 h-4 mr-2" />
             Upload Document
           </Button>
@@ -171,10 +184,10 @@ const Documents = () => {
       {filteredDocuments.length === 0 ? (
         <Empty
           title="No Documents Found"
-          description="You haven't uploaded any documents yet, or no documents match your search criteria."
+description="Start building your secure document vault by uploading your important documents like ID cards, policies, and receipts."
           action={() => {/* Upload action */}}
           actionText="Upload First Document"
-          icon="FolderOpen"
+          icon="Upload"
         />
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

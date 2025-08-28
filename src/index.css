@@ -27,11 +27,12 @@
     border: 1px solid rgba(37, 99, 235, 0.2);
   }
   
-  .gradient-text {
+.gradient-text {
     background: linear-gradient(135deg, #2563EB, #7C3AED);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: #2563EB; /* Fallback color */
   }
   
   .skeleton {

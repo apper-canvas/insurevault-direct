@@ -37,13 +37,13 @@ const Header = ({ onMenuToggle }) => {
           </Button>
           
           {/* Logo & Title */}
-          <div className="flex items-center gap-3">
+<div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
               <ApperIcon name="Shield" className="w-5 h-5 text-white" />
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold gradient-text">InsureVault</h1>
-              <p className="text-sm text-gray-500 -mt-1">{getPageTitle()}</p>
+            <div className="block">
+              <h1 className="text-lg sm:text-xl font-bold gradient-text">InsureVault</h1>
+              <p className="text-xs sm:text-sm text-gray-500 -mt-1 hidden sm:block">{getPageTitle()}</p>
             </div>
           </div>
         </div>

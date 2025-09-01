@@ -96,14 +96,13 @@ return (
                   </p>
                 </div>
               </div>
-<div className="flex flex-wrap gap-1 mt-3">
-<div className="flex flex-wrap gap-2">
+<div className="flex flex-wrap gap-2 mt-3">
                 {(quote.features || ["Cashless Claims", "24/7 Support", "Quick Settlement"]).slice(0, 3).map((feature, index) => (
                   <Badge key={`${quote.id}-feature-${index}`} variant="primary" className="text-xs">
                     {feature}
                   </Badge>
                 ))}
-              </div>
+                {(quote.features || []).length > 3 && (
                   <Badge variant="outline" className="text-xs">
                     +{(quote.features || []).length - 3} more
                   </Badge>

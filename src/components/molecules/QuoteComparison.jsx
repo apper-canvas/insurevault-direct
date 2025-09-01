@@ -97,13 +97,13 @@ return (
                 </div>
               </div>
 <div className="flex flex-wrap gap-1 mt-3">
-                {/* Features badges */}
-                {(quote.features || ["Cashless Claims", "24/7 Support", "Quick Settlement"]).slice(0, 3).map((feature, index, arr, quoteIndex = quotes.findIndex(q => q.id === quote.id)) => (
-                  <Badge key={`${quoteIndex}-feature-${index}`} variant="primary" className="text-xs">
+<div className="flex flex-wrap gap-2">
+                {(quote.features || ["Cashless Claims", "24/7 Support", "Quick Settlement"]).slice(0, 3).map((feature, index) => (
+                  <Badge key={`${quote.id}-feature-${index}`} variant="primary" className="text-xs">
                     {feature}
                   </Badge>
                 ))}
-                {(quote.features || []).length > 3 && (
+              </div>
                   <Badge variant="outline" className="text-xs">
                     +{(quote.features || []).length - 3} more
                   </Badge>
@@ -145,9 +145,9 @@ return (
                         "24/7 Customer Support",
                         "Quick Claim Settlement",
                         "Pre-policy Medical Checkup",
-                        "Online Policy Management"
+"Zero Depreciation", "Personal Accident Cover"
                       ]).map((feature, index) => (
-                        <div key={`${quote.id}-feature-${index}`} className="flex items-center gap-2">
+                        <div key={`${quote.id}-expanded-feature-${index}`} className="flex items-center gap-2">
                           <ApperIcon name="Check" className="w-4 h-4 text-accent-600" />
                           <span className="text-sm text-gray-600">{feature}</span>
                         </div>
@@ -159,9 +159,9 @@ return (
                     <h5 className="font-medium text-gray-900 mb-2">Coverage Details</h5>
                     <div className="space-y-3">
                       {(quote.coverage?.details || [
-                        "Comprehensive Coverage", "Third Party Liability", "Personal Accident Cover"
+"Engine Protection", "Return to Invoice"
                       ]).map((detail, index) => (
-                        <div key={`${quote.id}-coverage-${index}`} className="flex items-center gap-2">
+                        <div key={`${quote.id}-coverage-detail-${index}`} className="flex items-center gap-2">
                           <ApperIcon name="Check" className="w-4 h-4 text-accent-600" />
                           <span className="text-sm text-gray-600">{detail}</span>
                         </div>
@@ -175,7 +175,7 @@ return (
                         "Pre-existing conditions (first 2 years)",
                         "War & Nuclear Risks", 
                         "Wear & Tear", 
-                        "Consequential Loss"
+"Consequential Loss"
                       ]).map((exclusion, index) => (
                         <div key={`${quote.id}-exclusion-${index}`} className="flex items-center gap-2">
                           <ApperIcon name="X" className="w-4 h-4 text-error" />

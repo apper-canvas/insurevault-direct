@@ -111,9 +111,9 @@ const AddAssetFlow = () => {
     <div className="max-w-4xl mx-auto">
       {/* Progress Steps */}
       <div className="mb-8">
-        <div className="flex items-center justify-center">
+<div className="flex items-center justify-center">
           {steps.map((step, index) => (
-            <React.Fragment key={step.number}>
+            <React.Fragment key={`step-${step.number}`}>
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   step.completed 
@@ -155,10 +155,10 @@ const AddAssetFlow = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {assetTypes.map((asset) => (
                 <button
-                  key={asset.type}
+                  key={`asset-${asset.type}`}
                   onClick={() => handleAssetTypeSelect(asset.type)}
                   className="p-6 border-2 border-gray-200 rounded-xl hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 text-center group"
                 >

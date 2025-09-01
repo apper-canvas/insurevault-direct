@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
 
 const QuoteComparison = ({ 
   quotes = [],
@@ -96,16 +96,16 @@ return (
                   </p>
                 </div>
               </div>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {(quote.features || ["Cashless Claims", "24/7 Support", "Quick Settlement"]).slice(0, 3).map((feature, index) => (
-                  <Badge key={index} variant="primary" className="text-xs">
+<div className="flex flex-wrap gap-1 mt-3">
+                {/* Features badges */}
+                {(quote.features || ["Cashless Claims", "24/7 Support", "Quick Settlement"]).slice(0, 3).map((feature, index, arr, quoteIndex = quotes.findIndex(q => q.id === quote.id)) => (
+                  <Badge key={`${quoteIndex}-feature-${index}`} variant="primary" className="text-xs">
                     {feature}
                   </Badge>
                 ))}
-                {quote.features && quote.features.length > 3 && (
-                  <Badge variant="default" className="text-xs">
-                    +{quote.features.length - 3} more
+                {(quote.features || []).length > 3 && (
+                  <Badge variant="outline" className="text-xs">
+                    +{(quote.features || []).length - 3} more
                   </Badge>
                 )}
               </div>
@@ -139,15 +139,15 @@ return (
                 <div className="mt-4 pt-4 border-t border-gray-200 space-y-4 animate-slide-up">
                   <div>
                     <h5 className="font-medium text-gray-900 mb-2">Key Features</h5>
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="space-y-3">
                       {(quote.features || [
                         "Cashless Claims at 5000+ Hospitals",
                         "24/7 Customer Support",
                         "Quick Claim Settlement",
-                        "Coverage for Pre-existing Diseases",
-                        "Annual Health Check-up"
+                        "Pre-policy Medical Checkup",
+                        "Online Policy Management"
                       ]).map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2">
+                        <div key={`${quote.id}-feature-${index}`} className="flex items-center gap-2">
                           <ApperIcon name="Check" className="w-4 h-4 text-accent-600" />
                           <span className="text-sm text-gray-600">{feature}</span>
                         </div>
@@ -156,14 +156,28 @@ return (
                   </div>
                   
                   <div>
+                    <h5 className="font-medium text-gray-900 mb-2">Coverage Details</h5>
+                    <div className="space-y-3">
+                      {(quote.coverage?.details || [
+                        "Comprehensive Coverage", "Third Party Liability", "Personal Accident Cover"
+                      ]).map((detail, index) => (
+                        <div key={`${quote.id}-coverage-${index}`} className="flex items-center gap-2">
+                          <ApperIcon name="Check" className="w-4 h-4 text-accent-600" />
+                          <span className="text-sm text-gray-600">{detail}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+<div>
                     <h5 className="font-medium text-gray-900 mb-2">Exclusions</h5>
-                    <div className="space-y-1">
+                    <div className="space-y-3">
                       {(quote.exclusions || [
                         "Pre-existing conditions (first 2 years)",
-                        "Cosmetic treatments",
-                        "Experimental treatments"
+                        "War & Nuclear Risks", 
+                        "Wear & Tear", 
+                        "Consequential Loss"
                       ]).map((exclusion, index) => (
-                        <div key={index} className="flex items-center gap-2">
+                        <div key={`${quote.id}-exclusion-${index}`} className="flex items-center gap-2">
                           <ApperIcon name="X" className="w-4 h-4 text-error" />
                           <span className="text-sm text-gray-600">{exclusion}</span>
                         </div>
@@ -171,6 +185,7 @@ return (
                     </div>
                   </div>
                 </div>
+              )}
               )}
             </div>
           );
